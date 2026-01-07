@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>作品详情 - 诗经数据可视化设计</title>
+		<link rel="stylesheet" href="css/ui-detail.css">
+		<style>
+			.image-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+				gap: 30px;
+			}
+
+			.img-wrapper {
+				position: relative;
+				width: 100%;
+				padding-top: 70.32%;
+				max-width: 600px;
+				margin: 0 auto;
+				border-radius: 8px;
+				border: 2px solid rgba(74, 144, 226, 0.3);
+				overflow: hidden;
+			}
+
+			.img-wrapper img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				background-color: #1a1a2e;
+				cursor: pointer;
+				transition: transform 0.3s ease;
+			}
+
+			.img-wrapper img:hover {
+				transform: scale(1.02);
+			}
+
+			.dynamic-view-btn {
+				display: inline-block;
+				background-color: #1e2a5e;
+				color: #fff;
+				font-size: 15px;
+				padding: 10px 25px;
+				border-radius: 8px;
+				border: 1px solid #4a90e2;
+				text-decoration: none;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				margin-top: 5px;
+			}
+
+			.dynamic-view-btn:hover {
+				background-color: #4a90e2;
+				color: #fff;
+				transform: translateX(4px);
+				text-decoration: none;
+			}
+
+			.text-desc a {
+				color: #00d3f9;
+				text-decoration: none;
+			}
+
+			.text-desc a:hover {
+				text-decoration: underline;
+				color: #8ab4f8;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="star-sky" id="starSky"></div>
+		<!-- 导航栏 -->
+		<nav class="nav-bar">
+			<div class="nav-logo">
+				<a href="index.html">2022-2026</a>
+			</div>
+			<ul class="nav-menu">
+				<li><a href="index.html">首页</a></li>
+				<li><a href="ui.html">UI设计</a></li>
+				<li><a href="visual.html">信息可视化</a></li>
+				<li><a href="web.html">编程设计与开发</a></li>
+				<li><a href="game.html">游戏设计与开发</a></li>
+				<li><a href="video.html">视频剪辑</a></li>
+				<li><a href="designe.html">平面设计</a></li>
+			</ul>
+			<div class="nav-hamburger">☰</div>
+		</nav>
+		<!-- 详情页主体 -->
+		<div class="detail-container">
+			<!-- 返回按钮 -->
+			<a href="visual.html" class="back-btn">← 返回作品列表</a>
+			<!-- 作品标题 -->
+			<div class="detail-title">
+				<h2>诗 经 数 据 可 视 化</h2>
+				<p>中华传统文化</p>
+			</div>
+			<!-- 文字说明区域 -->
+			<div class="detail-section">
+				<h3>作品说明</h3>
+				<div class="text-desc">
+					<p><strong>设计简介：</strong>《诗经》主题、时期与地域分布可视化分析以数字化手段解读古典诗歌，通过Tableau构建可交互故事板，从主题、时期、地点三大维度探索《诗经》的文化内涵。
+						以“主题”“时期”“地点”三大维度数据为基以数字化手段解读古典诗歌，提升传统文础，借助可视化方式探索《诗经》的情感化的理解深度与传播广度，为传统文化的结构与文化分布，提升对传统文化的理解传承与发展提供新视角。深度与传播广度。
+					</p>
+					<p><strong>设计工具：</strong>Tableau、Photoshop</p>
+					<a href="https://public.tableau.com/views/1_17479817987550/1_1?:language=zh-CN&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+						target="_blank" class="dynamic-view-btn">点击查看动态可视化</a>
+				</div>
+			</div>
+			<!-- 视频展示区域 -->
+			<div class="detail-section">
+				<h3>作品演示视频</h3>
+				<div class="video-wrapper">
+					<iframe
+						src="//player.bilibili.com/player.html?isOutside=true&aid=115840485692150&bvid=BV1uJipBvEka&cid=35197750192&p=1"
+						scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+				</div>
+			</div>
+			<!-- 展板/图片展示区域 -->
+			<div class="detail-section">
+				<h3>作品展板</h3>
+				<div class="image-grid">
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/visual/%E8%AF%97%E7%BB%8F%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%961.jpg" alt="海报" class="clickable-img">
+					</div>
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/visual/%E8%AF%97%E7%BB%8F%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%962.jpg" alt="展板1" class="clickable-img">
+					</div>
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/visual/%E8%AF%97%E7%BB%8F%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%963.jpg" alt="展板1" class="clickable-img">
+					</div>
+				</div>
+			</div>
+			<div class="simple-member">
+				<p>项目作者：刘子瑜</p>
+			</div>
+		</div>
+		<!-- 大图预览遮罩层 -->
+		<div class="img-modal" id="imgModal">
+			<span class="close-modal" id="closeModal">&times;</span>
+			<img class="modal-img" id="modalImg" src="" alt="大图预览">
+		</div>
+		<script>
+			// 生成星空背景
+			window.onload = function() {
+				const starSky = document.getElementById('starSky');
+				const starCount = 100;
+				for (let i = 0; i < starCount; i++) {
+					const star = document.createElement('div');
+					star.className = 'star';
+					star.style.left = Math.random() * 100 + 'vw';
+					star.style.top = Math.random() * 100 + 'vh';
+					const starSize = Math.random() * 2 + 1;
+					star.style.width = starSize + 'px';
+					star.style.height = starSize + 'px';
+					star.style.animationDelay = Math.random() * 5 + 's';
+					star.style.animationDuration = Math.random() * 3 + 2 + 's';
+					starSky.appendChild(star);
+				}
+			}
+			// 大图预览逻辑
+			const modal = document.getElementById('imgModal');
+			const modalImg = document.getElementById('modalImg');
+			const closeBtn = document.getElementById('closeModal');
+			const clickableImgs = document.querySelectorAll('.clickable-img');
+			clickableImgs.forEach(img => {
+				img.onclick = function() {
+					modal.style.display = 'flex';
+					modalImg.src = this.src;
+					modalImg.alt = this.alt;
+				}
+			});
+			closeBtn.onclick = function() {
+				modal.style.display = 'none';
+			}
+			modal.onclick = function(e) {
+				if (e.target === modal) {
+					modal.style.display = 'none';
+				}
+			}
+			document.onkeydown = function(e) {
+				if (e.key === 'Escape' && modal.style.display === 'flex') {
+					modal.style.display = 'none';
+				}
+			}
+			const hamburger = document.querySelector('.nav-hamburger');
+			const navMenu = document.querySelector('.nav-menu');
+			hamburger.onclick = function() {
+				navMenu.classList.toggle('active');
+			}
+		</script>
+	</body>
+</html>

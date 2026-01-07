@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>作品详情 - 其他设计合集</title>
+		<link rel="stylesheet" href="css/ui-detail.css">
+		<style>
+			.ui-group-img-grid {
+			    display: grid;
+			    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+			    gap: 25px; 
+			    margin: 20px 0 40px;
+			}
+
+			.ui-group-img-item {
+			    width: 100%;
+			    max-width: 300px; 
+			    margin: 0 auto;
+			    position: relative;
+			    border-radius: 20px;
+			    overflow: hidden;
+			    border: 4px solid #273151;
+			    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.2);
+			}
+
+			.ui-group-img-item img {
+			    width: 100%;
+			    height: auto;
+			    object-fit: contain;
+			    cursor: pointer;
+			    transition: transform 0.3s ease;
+			}
+
+			.ui-group-img-item img:hover {
+			    transform: scale(1.02);
+			}
+
+			.ui-group-desc {
+			    background-color: rgba(255, 255, 255, 0.05);
+			    border-radius: 8px;
+			    padding: 15px 20px;
+			    color: #eee;
+			    font-size: 16px;
+			    line-height: 1.6;
+			    margin: 0 0 20px 0;
+			}
+
+			/* 星空样式（补充，确保星空正常显示） */
+			.star-sky {
+			    position: fixed;
+			    top: 0;
+			    left: 0;
+			    width: 100vw;
+			    height: 100vh;
+			    z-index: -1;
+			    background-color: #0a0e27;
+			}
+
+			.star {
+			    position: absolute;
+			    background-color: #fff;
+			    border-radius: 50%;
+			    animation: twinkle infinite alternate;
+			}
+
+			@keyframes twinkle {
+			    from {
+			        opacity: 1;
+			    }
+			    to {
+			        opacity: 0.3;
+			    }
+			}
+
+			/* 大图预览遮罩层样式（补充，确保预览正常） */
+			.img-modal {
+			    display: none;
+			    position: fixed;
+			    top: 0;
+			    left: 0;
+			    width: 100vw;
+			    height: 100vh;
+			    background-color: rgba(0, 0, 0, 0.9);
+			    justify-content: center;
+			    align-items: center;
+			    z-index: 9999;
+			}
+
+			.close-modal {
+			    position: absolute;
+			    top: 20px;
+			    right: 40px;
+			    color: #fff;
+			    font-size: 40px;
+			    font-weight: bold;
+			    cursor: pointer;
+			    transition: color 0.3s ease;
+			}
+
+			.close-modal:hover {
+			    color: #ccc;
+			}
+
+			.modal-img {
+			    max-width: 90%;
+			    max-height: 90%;
+			    object-fit: contain;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="star-sky" id="starSky"></div>
+
+		<!-- 导航栏 -->
+		<nav class="nav-bar">
+			<div class="nav-logo">
+				<a href="index.html">2022-2026</a>
+			</div>
+			<ul class="nav-menu">
+				<li><a href="index.html">首页</a></li>
+				<li><a href="ui.html">UI设计</a></li>
+				<li><a href="visual.html">信息可视化</a></li>
+				<li><a href="web.html">编程设计与开发</a></li>
+				<li><a href="game.html">游戏设计与开发</a></li>
+				<li><a href="video.html">视频剪辑</a></li>
+				<li><a href="designe.html">平面设计</a></li>
+			</ul>
+			<div class="nav-hamburger">☰</div>
+		</nav>
+
+		<!-- 详情页主体 -->
+		<div class="detail-container">
+			<!-- 返回按钮 -->
+			<a href="ui.html" class="back-btn">← 返回作品列表</a>
+
+			<!-- 作品标题 -->
+			<div class="detail-title">
+				<h2>设  计  合  集</h2>
+				<p>仅用于个人能力展示</p>
+			</div>
+
+			<!-- 文字说明区域 -->
+			<div class="detail-section">
+				<h3>作品说明</h3>
+				<div class="text-desc">
+					<p><strong>注：</strong>此页设计均为外包项目作品，仅用于个人设计能力展示
+					</p>
+					<p><strong>设计工具：</strong>Figma、Axure、Photoshop、Llustrator、即时设计</p>
+				</div>
+			</div>
+
+			<!-- 第一小组：春节引导页（4张）- 动态渲染 -->
+			<div class="detail-section">
+				<h3>春节引导页</h3>
+				<div class="ui-group-desc">
+					<p>设计主题：春节APP引导页，节日主题页面设计</p>
+				</div>
+				<div class="ui-group-img-grid" id="springFestivalGrid"></div>
+			</div>
+
+			<!-- 第二小组：MBTI交友APP（9张）- 动态渲染 -->
+			<div class="detail-section">
+				<h3>MBTI交友APP</h3>
+				<div class="ui-group-desc">
+					<p>设计主题：通过MBTI来找到自己的最佳拍档</p>
+				</div>
+				<div class="ui-group-img-grid" id="mbtiGrid"></div>
+			</div>
+
+			<!-- 第三小组：运动健康APP（20张）- 动态渲染 -->
+			<div class="detail-section">
+				<h3>运动健康APP</h3>
+				<div class="ui-group-desc">
+					<p>设计主题：不同排列分布下的运动健康APP</p>
+				</div>
+				<div class="ui-group-img-grid" id="sportsHealthGrid"></div>
+			</div>
+
+		</div>
+
+		<!-- 大图预览遮罩层 -->
+		<div class="img-modal" id="imgModal">
+			<span class="close-modal" id="closeModal">&times;</span>
+			<img class="modal-img" id="modalImg" src="" alt="大图预览">
+		</div>
+
+		<script>
+			// 生成星空背景
+			window.onload = function() {
+				const starSky = document.getElementById('starSky');
+				const starCount = 100; // 详情页星星数量
+
+				for (let i = 0; i < starCount; i++) {
+					const star = document.createElement('div');
+					star.className = 'star';
+
+					// 随机位置
+					star.style.left = Math.random() * 100 + 'vw';
+					star.style.top = Math.random() * 100 + 'vh';
+
+					// 随机大小
+					const starSize = Math.random() * 2 + 1;
+					star.style.width = starSize + 'px';
+					star.style.height = starSize + 'px';
+
+					// 随机动画延迟和时长
+					star.style.animationDelay = Math.random() * 5 + 's';
+					star.style.animationDuration = Math.random() * 3 + 2 + 's';
+
+					starSky.appendChild(star);
+				}
+
+				// -------------------------- 核心：通用图片渲染函数（你之前缺失的部分） --------------------------
+				function renderImgGrid(gridId, imgList, altText) {
+					const grid = document.getElementById(gridId);
+					// 遍历图片列表，动态创建元素
+					for (let i = 0; i < imgList.length; i++) {
+						const imgItem = document.createElement('div');
+						imgItem.className = 'ui-group-img-item';
+
+						const img = document.createElement('img');
+						img.src = imgList[i];
+						img.alt = altText;
+						img.className = 'clickable-img'; // 给图片添加可点击类名
+
+						imgItem.appendChild(img);
+						grid.appendChild(imgItem);
+					}
+				}
+
+				// -------------------------- 图片数据（手动列出，可直接替换链接） --------------------------
+				// 春节引导页（4张）
+				const springFestivalImgs = [
+				    "https://lllzyyy.space/images/ui/1%E5%BC%95%E5%AF%BC%E9%A1%B5.jpg",
+				    "https://lllzyyy.space/images/ui/2%E5%BC%95%E5%AF%BC%E9%A1%B5.jpg",
+				    "https://lllzyyy.space/images/ui/3%E5%BC%95%E5%AF%BC%E9%A1%B5.jpg",
+				    "https://lllzyyy.space/images/ui/4%E5%BC%95%E5%AF%BC%E9%A1%B5.jpg"
+				];
+				// MBTI交友APP（9张，替换引号内链接即可）
+				const mbtiImgs = [
+				    // 第1张
+				    "https://lllzyyy.space/images/ui/MBTI%E4%BA%A4%E5%8F%8BAPP1.jpg",
+				    // 第2张
+				    "https://lllzyyy.space/images/ui/MBTI%E4%BA%A4%E5%8F%8BAPP2.jpg",
+				    // 第3张
+				    "https://lllzyyy.space/images/ui/MBTI%E4%BA%A4%E5%8F%8BAPP3.jpg",
+				    // 第4张
+				    "https://lllzyyy.space/images/ui/MBTI%E4%BA%A4%E5%8F%8BAPP4.jpg",
+				    // 第5张
+				    "https://lllzyyy.space/images/ui/MBTI%E4%BA%A4%E5%8F%8BAPP5.jpg",
+				    // 第6张
+				    "https://lllzyyy.space/images/ui/MBTI%E4%BA%A4%E5%8F%8BAPP6.jpg",
+				    // 第7张
+				    "https://lllzyyy.space/images/ui/MBTI%E4%BA%A4%E5%8F%8BAPP7.jpg",
+				    // 第8张
+				    "https://lllzyyy.space/images/ui/MBTI%E4%BA%A4%E5%8F%8BAPP8.jpg",
+				    // 第9张
+				    "https://lllzyyy.space/images/ui/MBTI%E4%BA%A4%E5%8F%8BAPP9.jpg"
+				];
+				// 运动健康APP（20张，替换引号内链接即可）
+				const sportsHealthImgs = [
+				    // 第一组（5张）
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E4%B8%80%E7%BB%841.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E4%B8%80%E7%BB%842.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E4%B8%80%E7%BB%843.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E4%B8%80%E7%BB%844.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E4%B8%80%E7%BB%845.jpg",
+				    // 第二组（5张）
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E4%BA%8C%E7%BB%841.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E4%BA%8C%E7%BB%842.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E4%BA%8C%E7%BB%843.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E4%BA%8C%E7%BB%844.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E4%BA%8C%E7%BB%845.jpg",
+				    // 第三组（5张）
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E4%B8%89%E7%BB%841.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E4%B8%89%E7%BB%842.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E4%B8%89%E7%BB%843.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E4%B8%89%E7%BB%844.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E4%B8%89%E7%BB%845.jpg",
+				    // 第四组（5张）
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E5%9B%9B%E7%BB%841.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E5%9B%9B%E7%BB%842.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E5%9B%9B%E7%BB%843.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E5%9B%9B%E7%BB%844.jpg",
+				    "https://lllzyyy.space/images/ui/%E7%AC%AC%E5%9B%9B%E7%BB%845.jpg"
+				];
+
+				// -------------------------- 调用渲染函数，渲染所有图片（你之前缺失的部分） --------------------------
+				renderImgGrid('springFestivalGrid', springFestivalImgs, '春节引导页');
+				renderImgGrid('mbtiGrid', mbtiImgs, 'MBTI交友APP');
+				renderImgGrid('sportsHealthGrid', sportsHealthImgs, '运动健康APP');
+
+				// -------------------------- 大图预览逻辑 --------------------------
+				const modal = document.getElementById('imgModal');
+				const modalImg = document.getElementById('modalImg');
+				const closeBtn = document.getElementById('closeModal');
+
+				// 事件委托：点击所有clickable-img触发预览
+				document.addEventListener('click', function(e) {
+					if (e.target.classList.contains('clickable-img')) {
+						modal.style.display = 'flex';
+						modalImg.src = e.target.src;
+						modalImg.alt = e.target.alt;
+					}
+				});
+
+				closeBtn.onclick = function() {
+					modal.style.display = 'none';
+				}
+
+				modal.onclick = function(e) {
+					if (e.target === modal) {
+						modal.style.display = 'none';
+					}
+				};
+
+				// ESC键关闭
+				document.onkeydown = function(e) {
+					if (e.key === 'Escape' && modal.style.display === 'flex') {
+						modal.style.display = 'none';
+					}
+				};
+
+				// -------------------------- 汉堡菜单切换逻辑 --------------------------
+				const hamburger = document.querySelector('.nav-hamburger');
+				const navMenu = document.querySelector('.nav-menu');
+				hamburger.onclick = function() {
+					navMenu.classList.toggle('active');
+				};
+			};
+		</script>
+	</body>
+</html>

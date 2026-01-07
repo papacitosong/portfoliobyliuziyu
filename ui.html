@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>UI设计 - 创想·生长录</title>
+		<link rel="stylesheet" href="css/ui.css">
+	</head>
+	<body>
+		<div class="star-sky" id="starSky"></div>
+		<nav class="nav-bar">
+			<div class="nav-logo">
+				<a href="index.html">2022-2026</a>
+			</div>
+			<ul class="nav-menu">
+				<li><a href="index.html">首页</a></li>
+				<li><a href="ui.html">UI设计</a></li>
+				<li><a href="visual.html">信息可视化</a></li>
+				<li><a href="web.html">编程设计与开发</a></li>
+				<li><a href="game.html">游戏设计与开发</a></li>
+				<li><a href="video.html">视频剪辑</a></li>
+				<li><a href="designe.html">平面设计</a></li>
+			</ul>
+			<div class="nav-hamburger">☰</div>
+		</nav>
+
+		<!-- UI设计作品展示区域 -->
+		<div class="ui-works-container">
+			<div class="ui-title">
+				<h2>UI设计作品</h2>
+				<p>专注用户体验与视觉美感的交互设计实践</p>
+			</div>
+
+			<!-- 作品列表容器 -->
+			<div class="ui-works-list" id="uiWorksList"></div>
+		</div>
+
+		<script>
+			// 星空生成逻辑
+			function createStarSky() {
+				const starSky = document.getElementById("starSky");
+				const starCount = 150;
+
+				for (let i = 0; i < starCount; i++) {
+					const star = document.createElement("div");
+					star.className = "star";
+
+					// 随机星星大小
+					const starSize = Math.random() * 2 + 1;
+					star.style.width = `${starSize}px`;
+					star.style.height = `${starSize}px`;
+
+					// 随机位置
+					star.style.left = `${Math.random() * 100}vw`;
+					star.style.top = `${Math.random() * 100}vh`;
+
+					// 随机动画延迟与时长
+					star.style.animationDelay = `${Math.random() * 5}s`;
+					star.style.animationDuration = `${Math.random() * 2 + 2}s`;
+
+					starSky.appendChild(star);
+				}
+			}
+
+			// 页面加载后执行
+			window.onload = function() {
+				createStarSky(); // 生成星空
+
+				// UI作品数据数组
+				const uiWorksData = [{
+						imgSrc: "https://lllzyyy.space/images/ui/%E5%8E%95%E7%95%A5-%E5%AE%A3%E4%BC%A0%E6%B5%B7%E6%8A%A5.jpg",
+						imgAlt: "作品1：智慧城市 | 厕所导航",
+						title: "厕略",
+						desc: "智慧城市 | 厕所导航",
+						detailHref: "ui-detail1.html"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/ui/%E6%99%BA%E4%BA%AB%E5%81%A5%E5%BA%B71.jpg",
+						imgAlt: "智享健康",
+						title: "智享健康",
+						desc: "智慧健康美食 领航健康生活",
+						detailHref: "ui-detail2.html"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/ui/FANTASY%20LINK%E5%B1%95%E6%9D%BF3.png",
+						imgAlt: "FANTASY LINK",
+						title: "FANTASY LINK",
+						desc: "经典三消 随时随地",
+						detailHref: "ui-detail3.html"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/ui/%E5%90%88%E9%9B%86%E5%B0%81%E9%9D%A2.jpg",
+						imgAlt: "其余UI设计合集",
+						title: "其余UI设计合集",
+						desc: "此页设计均为外包作品，仅用于个人设计能力展示",
+						detailHref: "ui-detail4.html"
+					}
+				];
+
+				// 获取作品列表容器
+				const uiWorksList = document.getElementById("uiWorksList");
+
+				// 动态生成作品卡片
+				for (let i = 0; i < uiWorksData.length; i++) {
+					// 创建跳转链接
+					const cardLink = document.createElement("a");
+					cardLink.className = "card-link";
+					cardLink.href = uiWorksData[i].detailHref;
+
+					// 创建作品卡片
+					const workCard = document.createElement("div");
+					workCard.className = "ui-work-card";
+
+					// 创建A3图片容器 + 图片
+					const imgContainer = document.createElement("div");
+					imgContainer.className = "work-img-container";
+					const workImg = document.createElement("img");
+					workImg.src = uiWorksData[i].imgSrc;
+					workImg.alt = uiWorksData[i].imgAlt;
+					imgContainer.appendChild(workImg);
+
+					// 创建作品信息
+					const workInfo = document.createElement("div");
+					workInfo.className = "work-info";
+					const workTitle = document.createElement("h3");
+					workTitle.textContent = uiWorksData[i].title;
+					const workDesc = document.createElement("p");
+					workDesc.textContent = uiWorksData[i].desc;
+					workInfo.appendChild(workTitle);
+					workInfo.appendChild(workDesc);
+
+					// 嵌套元素
+					workCard.appendChild(imgContainer);
+					workCard.appendChild(workInfo);
+					cardLink.appendChild(workCard);
+					uiWorksList.appendChild(cardLink);
+				}
+			};
+			const hamburger = document.querySelector('.nav-hamburger');
+			const navMenu = document.querySelector('.nav-menu');
+			hamburger.onclick = function() {
+				navMenu.classList.toggle('active');
+			}
+		</script>
+	</body>
+</html>

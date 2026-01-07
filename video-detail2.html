@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>作品详情 - 《缘定之环》</title>
+		<link rel="stylesheet" href="css/ui-detail.css">
+	</head>
+	<body>
+		<div class="star-sky" id="starSky"></div>
+
+		<!-- 导航栏 -->
+		<nav class="nav-bar">
+			<div class="nav-logo">
+				<a href="index.html">2022-2026</a>
+			</div>
+			<ul class="nav-menu">
+				<li><a href="index.html">首页</a></li>
+				<li><a href="ui.html">UI设计</a></li>
+				<li><a href="visual.html">信息可视化</a></li>
+				<li><a href="web.html">编程设计与开发</a></li>
+				<li><a href="game.html">游戏设计与开发</a></li>
+				<li><a href="video.html">视频剪辑</a></li>
+				<li><a href="designe.html">平面设计</a></li>
+			</ul>
+			<div class="nav-hamburger">☰</div>
+		</nav>
+
+		<!-- 详情页主体 -->
+		<div class="detail-container">
+			<!-- 返回按钮 -->
+			<a href="video.html" class="back-btn">← 返回作品列表</a>
+
+			<!-- 作品标题 -->
+			<div class="detail-title">
+				<h2>《缘 定 之 环》</h2>
+				<p>科技世界｜了解伴侣｜AIGC</p>
+			</div>
+
+			<!-- 文字说明区域 -->
+			<div class="detail-section">
+				<h3>作品说明</h3>
+				<div class="text-desc">
+					<p><strong>设计背景：</strong>苏然被一款名为 “缘定之环”
+						的恋爱智能戒指吸引并购买，戒指为她速配到理想伴侣林睿，两人约定约会。初次见面后，在戒指的提示下，林睿为苏然拉椅、询问饮食喜好，两人牵手散步、挽臂逛超市、同游美食街，感情逐渐升温并确定关系。但随着相处，过度依赖戒指的问题逐渐显现：戒指没电时林睿会敷衍苏然、忘记她生理期不能喝冰却按戒指提示递上冰水、逛超市时沉迷手机忽视苏然、在美食街按戒指提示劝阻苏然吃想吃的油炸小吃。苏然因林睿凡事依赖戒指、忽视自己的真实感受而生气爆发。林睿向朋友倾诉后幡然醒悟，扔掉戒指并向苏然诚恳道歉。最终，两人摆脱智能戒指的干扰，回归纯粹的相处，一起在游乐场拍照、牵手散步，在夕阳下享受简单美好的恋爱时光。
+					</p>
+					<p><strong>使用工具：</strong>即梦、可灵、Runway Gen2</p>
+				</div>
+			</div>
+
+			<!-- 视频展示区域 -->
+			<div class="detail-section">
+				<h3>预告</h3>
+				<div class="video-wrapper">
+					<iframe
+						src="//player.bilibili.com/player.html?isOutside=true&aid=115840468980101&bvid=BV1bHipBPEs5&cid=35197685546&p=1"
+						scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+				</div>
+			</div>
+			<div class="detail-section">
+				<h3>正片</h3>
+				<div class="video-wrapper">
+					<iframe
+						src="//player.bilibili.com/player.html?isOutside=true&aid=115840468915840&bvid=BV1MHipBPEkc&cid=35197684450&p=1"
+						scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+				</div>
+			</div>
+			<div class="simple-member">
+				<p>项目成员：刘子瑜、杨梵、黄佳欣、黄晓欣、田小丽、郭珊珊、周秋怡、邹伟颖</p>
+			</div>
+		</div>
+
+		<!-- 大图预览遮罩层 -->
+		<div class="img-modal" id="imgModal">
+			<span class="close-modal" id="closeModal">&times;</span>
+			<img class="modal-img" id="modalImg" src="" alt="大图预览">
+		</div>
+
+		<script>
+			// 生成星空背景
+			window.onload = function() {
+				const starSky = document.getElementById('starSky');
+				const starCount = 100; // 详情页星星数量
+
+				for (let i = 0; i < starCount; i++) {
+					const star = document.createElement('div');
+					star.className = 'star';
+
+					// 随机位置
+					star.style.left = Math.random() * 100 + 'vw';
+					star.style.top = Math.random() * 100 + 'vh';
+
+					// 随机大小
+					const starSize = Math.random() * 2 + 1;
+					star.style.width = starSize + 'px';
+					star.style.height = starSize + 'px';
+
+					// 随机动画延迟和时长
+					star.style.animationDelay = Math.random() * 5 + 's';
+					star.style.animationDuration = Math.random() * 3 + 2 + 's';
+
+					starSky.appendChild(star);
+				}
+			}
+
+			// 大图预览逻辑
+			const modal = document.getElementById('imgModal');
+			const modalImg = document.getElementById('modalImg');
+			const closeBtn = document.getElementById('closeModal');
+			const clickableImgs = document.querySelectorAll('.clickable-img');
+
+			clickableImgs.forEach(img => {
+				img.onclick = function() {
+					modal.style.display = 'flex';
+					modalImg.src = this.src;
+					modalImg.alt = this.alt;
+				}
+			});
+
+			closeBtn.onclick = function() {
+				modal.style.display = 'none';
+			}
+
+			modal.onclick = function(e) {
+				if (e.target === modal) {
+					modal.style.display = 'none';
+				}
+			}
+
+			// ESC键关闭
+			document.onkeydown = function(e) {
+				if (e.key === 'Escape' && modal.style.display === 'flex') {
+					modal.style.display = 'none';
+				}
+			}
+			const hamburger = document.querySelector('.nav-hamburger');
+			const navMenu = document.querySelector('.nav-menu');
+			hamburger.onclick = function() {
+				navMenu.classList.toggle('active');
+			}
+		</script>
+	</body>
+</html>

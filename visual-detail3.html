@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>作品详情 - 设计合集</title>
+		<link rel="stylesheet" href="css/ui-detail.css">
+		<style>
+			:root {
+				--primary-color: #4a90e2;
+				--secondary-color: #1e2a5e;
+				--bg-card: #121224;
+				--text-light: #eee;
+				--text-gray: #ccc;
+				--shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+				--radius: 12px;
+			}
+
+			/* 卡片容器：实现一行1-2个卡片*/
+			.work-cards-container {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+				gap: 30px;
+				/* 卡片之间的间距 */
+				margin: 0 auto 40px;
+				max-width: 900px;
+				/* 限制容器最大宽度，确保一行最多2个 */
+			}
+
+			/* 单个卡片样式 */
+			.work-card {
+				background-color: var(--bg-card);
+				border-radius: var(--radius);
+				border: 1px solid rgba(74, 144, 226, 0.3);
+				box-shadow: var(--shadow);
+				overflow: hidden;
+				display: flex;
+				flex-direction: column;
+				transition: transform 0.3s ease;
+			}
+
+			.work-card:hover {
+				transform: translateY(-6px);
+			}
+
+			/* 图片区域：3:4比例*/
+			.work-card-img {
+				width: 100%;
+				padding-top: 133.33%;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.work-card-img img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				cursor: pointer;
+				transition: transform 0.5s ease;
+			}
+
+			.work-card-img img:hover {
+				transform: scale(1.03);
+			}
+
+			/* 信息区域 */
+			.work-card-info {
+				padding: 20px 25px;
+				background-color: #0a0a1a;
+				flex: 1;
+			}
+
+			.work-card-title {
+				font-size: 20px;
+				color: var(--text-light);
+				margin: 0 0 10px 0;
+				font-weight: 600;
+				border-left: 3px solid var(--primary-color);
+				padding-left: 12px;
+			}
+
+			.work-card-desc {
+				font-size: 14px;
+				color: var(--text-gray);
+				line-height: 1.7;
+				margin: 0 0 18px 0;
+			}
+
+			.work-card-link a {
+				display: inline-block;
+				background-color: var(--secondary-color);
+				color: var(--text-light);
+				text-decoration: none;
+				padding: 8px 18px;
+				border-radius: 6px;
+				border: 1px solid var(--primary-color);
+				transition: all 0.3s ease;
+				font-size: 14px;
+			}
+
+			.work-card-link a:hover {
+				background-color: var(--primary-color);
+				color: #fff;
+				transform: translateX(4px);
+			}
+
+			/* 文字说明区域适配 */
+			.text-desc {
+				background-color: rgba(255, 255, 255, 0.03);
+				border-radius: 8px;
+				padding: 20px;
+				line-height: 1.8;
+				max-width: 900px;
+				margin: 0 auto;
+			}
+
+			.detail-section h3 {
+				color: var(--text-light);
+				border-left: 4px solid var(--primary-color);
+				padding-left: 10px;
+				max-width: 900px;
+				margin: 0 auto 15px auto;
+			}
+
+			/* -------------------------- 移动端适配（768px及以下） -------------------------- */
+			@media (max-width: 768px) {
+
+				/* 1. 卡片容器：一行1个卡片，适配手机屏幕 */
+				.work-cards-container {
+					grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+					gap: 20px;
+					max-width: 100%;
+					padding: 0 10px;
+					margin-bottom: 30px;
+				}
+
+				/* 2. 卡片样式：弱化阴影，减小圆角 */
+				.work-card {
+					--radius: 8px;
+					--shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+				}
+
+				.work-card:hover {
+					transform: translateY(-3px);
+				}
+
+				/* 3. 图片区域：减小悬浮放大比例 */
+				.work-card-img img:hover {
+					transform: scale(1.02);
+				}
+
+				/* 4. 卡片信息：减小内边距和字体 */
+				.work-card-info {
+					padding: 15px 20px;
+				}
+
+				.work-card-title {
+					font-size: 16px;
+					border-left-width: 2px;
+					padding-left: 8px;
+					margin-bottom: 8px;
+				}
+
+				.work-card-desc {
+					font-size: 12px;
+					line-height: 1.6;
+					margin-bottom: 15px;
+				}
+
+				/* 5. 卡片按钮：减小尺寸和字体 */
+				.work-card-link a {
+					padding: 6px 14px;
+					font-size: 12px;
+				}
+
+				.work-card-link a:hover {
+					transform: translateX(2px);
+				}
+
+				/* 6. 文字说明区域：占满屏幕，优化样式 */
+				.text-desc {
+					padding: 15px;
+					font-size: 14px;
+					max-width: 100%;
+					line-height: 1.6;
+					margin: 0 10px;
+				}
+
+				/* 7. 区域标题：适配手机屏幕 */
+				.detail-section h3 {
+					font-size: 18px;
+					border-left-width: 3px;
+					padding-left: 8px;
+					max-width: 100%;
+					margin: 0 10px 12px 10px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="star-sky" id="starSky"></div>
+
+		<!-- 导航栏 -->
+		<nav class="nav-bar">
+			<div class="nav-logo">
+				<a href="index.html">2022-2026</a>
+			</div>
+			<ul class="nav-menu">
+				<li><a href="index.html">首页</a></li>
+				<li><a href="ui.html">UI设计</a></li>
+				<li><a href="visual.html">信息可视化</a></li>
+				<li><a href="web.html">编程设计与开发</a></li>
+				<li><a href="game.html">游戏设计与开发</a></li>
+				<li><a href="video.html">视频剪辑</a></li>
+				<li><a href="designe.html">平面设计</a></li>
+			</ul>
+			<div class="nav-hamburger">☰</div>
+		</nav>
+
+		<!-- 详情页主体 -->
+		<div class="detail-container">
+			<!-- 返回按钮 -->
+			<a href="visual.html" class="back-btn">← 返回作品列表</a>
+
+			<!-- 作品标题 -->
+			<div class="detail-title">
+				<h2>设 计 合 集</h2>
+				<p>数据可视化作品</p>
+			</div>
+
+			<!-- 文字说明区域 -->
+			<div class="detail-section">
+				<h3>作品说明</h3>
+				<div class="text-desc">
+					<p><strong>注：</strong>课程小型练习作业，聚焦数据可视化的多维度呈现
+					</p>
+					<p><strong>设计工具：</strong>Tableau、Excel</p>
+				</div>
+			</div>
+
+			<!-- 卡片容器-->
+			<div class="detail-section">
+				<h3>作品展示</h3>
+				<div class="work-cards-container" id="workCardsContainer"></div>
+			</div>
+
+		</div>
+
+		<!-- 大图预览遮罩层 -->
+		<div class="img-modal" id="imgModal">
+			<span class="close-modal" id="closeModal">&times;</span>
+			<img class="modal-img" id="modalImg" src="" alt="大图预览">
+		</div>
+
+		<script>
+			// 生成星空背景
+			window.onload = function() {
+				const starSky = document.getElementById('starSky');
+				const starCount = 100;
+				for (let i = 0; i < starCount; i++) {
+					const star = document.createElement('div');
+					star.className = 'star';
+					star.style.left = Math.random() * 100 + 'vw';
+					star.style.top = Math.random() * 100 + 'vh';
+					const starSize = Math.random() * 2 + 1;
+					star.style.width = starSize + 'px';
+					star.style.height = starSize + 'px';
+					star.style.animationDelay = Math.random() * 5 + 's';
+					star.style.animationDuration = Math.random() * 3 + 2 + 's';
+					starSky.appendChild(star);
+				}
+
+				// -------------------------- 核心：1. 定义所有作品数据（方便扩展） --------------------------
+				const workList = [{
+						imgSrc: "https://lllzyyy.space/images/visual/1-%E8%B6%85%E5%B8%82%E9%94%80%E5%94%AE.jpg",
+						altText: "全球超市销售额",
+						title: "全球超市销售额",
+						desc: "探索全球超市销售额与年份、商品类别、销售地区的关联关系，通过散点图、柱状图、条形图呈现销售趋势，为商业决策提供数据支撑。",
+						link: "https://public.tableau.com/views/25_4_47/1_1?:language=zh-CN&:sid=&:redirect=auth"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/visual/%E5%85%A8%E7%90%83%E8%B6%85%E5%B8%82%E5%92%8C%E7%94%B5%E5%BD%B1%E6%B6%88%E8%B4%B9%E5%B8%82%E5%9C%BA.jpg",
+						altText: "全球超市和电影消费市场",
+						title: "全球超市和电影消费市场",
+						desc: "散点图区分客群与子类别占比，排序图呈现超市年度排名波动，热力图+气泡图解析电影热度与评分关联，多图表直观解读不同维度数据。",
+						link: "https://public.tableau.com/views/25_4_28/1_1?:language=zh-CN&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/visual/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E5%8F%AF%E8%A7%86%E5%8C%96.jpg",
+						altText: "豆瓣电影可视化",
+						title: "豆瓣不同国家电影类型可视化",
+						desc: "以 “花朵图” 呈现不同国家的电影分布，搭配饼图解析电影类型占比，通过可视化形式直观区分各国电影的类型结构差异。",
+						link: "https://public.tableau.com/views/25_5_12/1?:language=zh-CN&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/visual/%E5%93%AA%E4%B8%AA%E7%9C%81%E6%9C%80%E8%83%BD%E6%B6%88%E8%B4%B9%EF%BC%9F.jpg",
+						altText: "各省消费水平",
+						title: "各省消费水平",
+						desc: "用花点图呈现2014-2020年各省消费数据，直观展示年度趋势与高消费省份分布，用趣味可视化形式呈现区域消费力差异。",
+						link: "https://public.tableau.com/views/_17482580802190/1?:language=zh-CN&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/visual/%E6%88%91%E7%9A%84%E7%94%B5%E8%84%91.jpg",
+						altText: "我的电脑",
+						title: "我的电脑",
+						desc: "统计个人电脑，以气泡图、饼图、树状图等形式，呈现电脑内文件的类型占比、大小分布及层级结构，直观解析文件存储特征。",
+						link: "https://public.tableau.com/views/_17473304975720/sheet7?:language=zh-CN&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+					}
+				];
+
+				// -------------------------- 核心：2. for循环动态渲染卡片 --------------------------
+				const cardsContainer = document.getElementById('workCardsContainer');
+				// 遍历作品数据，动态创建卡片
+				for (let i = 0; i < workList.length; i++) {
+					const work = workList[i]; // 获取当前作品数据
+
+					// 1. 创建卡片外层容器
+					const card = document.createElement('div');
+					card.className = 'work-card';
+
+					// 2. 创建图片区域
+					const cardImg = document.createElement('div');
+					cardImg.className = 'work-card-img';
+					const img = document.createElement('img');
+					img.src = work.imgSrc;
+					img.alt = work.altText;
+					img.className = 'clickable-img';
+					cardImg.appendChild(img);
+
+					// 3. 创建信息区域
+					const cardInfo = document.createElement('div');
+					cardInfo.className = 'work-card-info';
+
+					// 创建作品标题
+					const cardTitle = document.createElement('h4');
+					cardTitle.className = 'work-card-title';
+					cardTitle.innerText = work.title;
+
+					// 创建作品描述
+					const cardDesc = document.createElement('p');
+					cardDesc.className = 'work-card-desc';
+					cardDesc.innerText = work.desc;
+
+					// 创建跳转链接
+					const cardLinkWrap = document.createElement('div');
+					cardLinkWrap.className = 'work-card-link';
+					const cardLink = document.createElement('a');
+					cardLink.href = work.link;
+					cardLink.target = '_blank';
+					cardLink.innerText = '点击查看动态可视化';
+					cardLinkWrap.appendChild(cardLink);
+
+					// 组装信息区域
+					cardInfo.appendChild(cardTitle);
+					cardInfo.appendChild(cardDesc);
+					cardInfo.appendChild(cardLinkWrap);
+
+					// 组装整个卡片
+					card.appendChild(cardImg);
+					card.appendChild(cardInfo);
+
+					// 将卡片添加到容器中
+					cardsContainer.appendChild(card);
+				}
+			};
+
+			// 大图预览逻辑
+			const modal = document.getElementById('imgModal');
+			const modalImg = document.getElementById('modalImg');
+			const closeBtn = document.getElementById('closeModal');
+			// 事件委托兼容动态生成的图片
+			document.addEventListener('click', function(e) {
+				if (e.target.classList.contains('clickable-img')) {
+					modal.style.display = 'flex';
+					modalImg.src = e.target.src;
+					modalImg.alt = e.target.alt;
+				}
+			});
+			closeBtn.onclick = () => modal.style.display = 'none';
+			modal.onclick = (e) => e.target === modal && (modal.style.display = 'none');
+			document.onkeydown = (e) => e.key === 'Escape' && modal.style.display === 'flex' && (modal.style.display = 'none');
+			const hamburger = document.querySelector('.nav-hamburger');
+			const navMenu = document.querySelector('.nav-menu');
+			hamburger.onclick = function() {
+				navMenu.classList.toggle('active');
+			}
+		</script>
+	</body>
+</html>

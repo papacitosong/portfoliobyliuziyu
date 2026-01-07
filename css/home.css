@@ -1,0 +1,717 @@
+/* 全局样式重置 */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Microsoft Yahei", sans-serif;
+	overflow-x: hidden;
+	position: relative;
+	scroll-behavior: smooth;
+	/* 平滑滚动 */
+}
+
+/* 导航栏样式：补充汉堡按钮基础样式，和ui-detail1一致 */
+.nav-bar {
+	width: 100%;
+	height: 60px;
+	background-color: rgba(0, 0, 0, 0.7);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 40px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+
+.nav-logo a {
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.nav-menu {
+	display: flex;
+	list-style: none;
+}
+
+.nav-menu li {
+	margin-left: 30px;
+}
+
+.nav-menu li a {
+	color: #fff;
+	font-size: 16px;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+	color: #4a90e2;
+}
+
+/* 新增：移动端汉堡按钮基础样式（默认隐藏，和ui-detail1格式一致） */
+.nav-hamburger {
+	display: none;
+	cursor: pointer;
+	font-size: 24px;
+	color: #fff;
+}
+
+/* 悬浮星空背景样式 */
+.star-sky {
+	width: 100vw;
+	height: 100vh;
+	background-color: #0a0a1a;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+.star {
+	position: absolute;
+	background-color: #fff;
+	border-radius: 50%;
+	opacity: 0;
+	animation: starFloat infinite ease-in-out;
+}
+
+@keyframes starFloat {
+	0% {
+		transform: translateY(0);
+		opacity: 0;
+	}
+
+	50% {
+		transform: translateY(-10px);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 0;
+	}
+}
+
+/* 作品集封面样式 */
+.portfolio-cover {
+	width: 100vw;
+	height: 100vh;
+	padding: 80px 20px 20px;
+	position: relative;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/* 垂直居中，优化布局 */
+}
+
+.text-content {
+	position: relative;
+	z-index: 2;
+	padding-left: 50px;
+	margin-bottom: 30px;
+	/* 缩短与箭头的距离 */
+}
+
+.title-cn {
+	font-size: 100px;
+	font-weight: bold;
+	color: #fff;
+	margin-bottom: 15px;
+	margin-left: 40px;
+	text-shadow: 0 0 10px rgba(74, 144, 226, 0.8);
+}
+
+.title-en {
+	font-size: 54px;
+	font-weight: bold;
+	color: #fff;
+	margin-bottom: 15px;
+	margin-left: 50px;
+}
+
+.subtitle {
+	font-size: 26px;
+	color: #eee;
+	margin-left: 50px;
+	margin-bottom: 15px;
+}
+
+.value-line {
+	font-size: 26px;
+	color: #eee;
+	margin-left: 50px;
+	margin-bottom: 15px;
+}
+
+/* 滚动提醒箭头（跳动动画，醒目不突兀） */
+.scroll-down-arrow {
+	position: absolute;
+	bottom: 50px;
+	/* 靠近底部，容易看到 */
+	left: 50%;
+	transform: translateX(-50%);
+	color: #fff;
+	font-size: 50px;
+	text-shadow: 0 0 15px rgba(74, 144, 226, 0.8);
+	animation: arrowBounce 2s infinite ease-in-out;
+	/* 跳动动画 */
+	cursor: pointer;
+	z-index: 2;
+}
+
+@keyframes arrowBounce {
+	0% {
+		transform: translateX(-50%) translateY(0);
+		opacity: 0.7;
+	}
+
+	50% {
+		transform: translateX(-50%) translateY(-15px);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateX(-50%) translateY(0);
+		opacity: 0.7;
+	}
+}
+
+/* 简历样式（缩短与封面的间距） */
+.resume-container {
+	width: 100%;
+	padding: 40px 40px 80px;
+	/* 减小顶部padding，缩短与封面距离 */
+	position: relative;
+	z-index: 2;
+}
+
+.resume-card {
+	max-width: 1400px;
+	margin: 0 auto;
+	background-color: rgba(10, 10, 26, 0.95);
+	border-radius: 20px;
+	box-shadow: 0 0 30px rgba(74, 144, 226, 0.3);
+	display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+	border: 1px solid rgba(74, 144, 226, 0.5);
+}
+
+.resume-left {
+	width: 320px;
+	background-color: #121224;
+	padding: 40px 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-right: 1px solid rgba(74, 144, 226, 0.5);
+}
+
+.avatar-wrapper {
+	width: 180px;
+	height: 180px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin-bottom: 20px;
+	border: 4px solid #4a90e2;
+	box-shadow: 0 0 20px rgba(74, 144, 226, 0.8);
+}
+
+.avatar-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.name {
+	font-size: 32px;
+	color: #fff;
+	font-weight: bold;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.job-intention {
+	font-size: 16px;
+	color: #4a90e2;
+	margin-bottom: 20px;
+	text-align: center;
+	font-weight: 500;
+}
+
+.contact-list {
+	width: 100%;
+}
+
+.contact-list p {
+	font-size: 14px;
+	color: #eee;
+	margin-bottom: 12px;
+	display: flex;
+	align-items: center;
+}
+
+.contact-list .icon {
+	margin-right: 10px;
+	font-size: 16px;
+	width: 20px;
+	text-align: center;
+}
+
+.resume-right {
+	flex: 1;
+	padding: 40px 50px;
+}
+
+.module-title {
+	font-size: 24px;
+	color: #4a90e2;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid rgba(74, 144, 226, 0.3);
+	font-weight: bold;
+}
+
+.skill-list {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	margin-bottom: 30px;
+}
+
+.skill-item {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.skill-label {
+	width: 120px;
+	font-weight: bold;
+	color: #fff;
+	font-size: 16px;
+}
+
+.skill-content {
+	flex: 1;
+	color: #ddd;
+	font-size: 15px;
+}
+
+.experience-list {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+	margin-bottom: 30px;
+}
+
+.experience-item {
+	display: flex;
+	gap: 20px;
+}
+
+.exp-time {
+	width: 140px;
+	color: #4a90e2;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.exp-content h4 {
+	color: #fff;
+	font-size: 16px;
+	margin-bottom: 8px;
+}
+
+.exp-content p {
+	color: #ddd;
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+.honor-list {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	margin-bottom: 30px;
+}
+
+.honor-group {
+	margin-bottom: 10px;
+}
+
+.honor-level {
+	color: #4a90e2;
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+.honor-item-list {
+	list-style: disc;
+	padding-left: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.honor-item-list li {
+	color: #ddd;
+	font-size: 14px;
+}
+
+/* 补充资质（证书样式） */
+.cert-list {
+	color: #ddd;
+	line-height: 1.8;
+	font-size: 14px;
+}
+
+/* 奖项图片样式 */
+.awards-container {
+	width: 100%;
+	padding: 0 40px 80px;
+	position: relative;
+	z-index: 2;
+}
+
+.awards-title {
+	max-width: 1400px;
+	margin: 0 auto 30px;
+	font-size: 24px;
+	color: #4a90e2;
+	padding-left: 10px;
+	border-left: 4px solid #4a90e2;
+}
+
+.awards-grid {
+	max-width: 1400px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 30px;
+}
+
+.award-card {
+	background-color: rgba(18, 18, 36, 0.9);
+	border-radius: 12px;
+	overflow: hidden;
+	border: 1px solid rgba(74, 144, 226, 0.3);
+	transition: all 0.3s ease;
+}
+
+.award-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 10px 20px rgba(74, 144, 226, 0.5);
+}
+
+.award-img {
+	width: 100%;
+	height: 280px;
+	object-fit: contain;
+	padding: 20px;
+	cursor: pointer;
+}
+
+.award-desc {
+	padding: 10px 15px;
+	color: #eee;
+	font-size: 14px;
+	text-align: center;
+	background-color: #121224;
+}
+
+/* 大图预览遮罩层 */
+.img-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.95);
+	z-index: 999;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+}
+
+.close-modal {
+	position: absolute;
+	top: 30px;
+	right: 50px;
+	color: #fff;
+	font-size: 40px;
+	cursor: pointer;
+	transition: color 0.3s ease;
+	z-index: 1000;
+}
+
+.close-modal:hover {
+	color: #4a90e2;
+}
+
+.modal-img {
+	max-width: 90%;
+	max-height: 90%;
+	object-fit: contain;
+	border-radius: 12px;
+	border: 2px solid #4a90e2;
+}
+
+/* -------------------------- 移动端适配核心优化（768px及以下） -------------------------- */
+@media (max-width: 768px) {
+	/* 1. 视口优化：禁止缩放，确保适配准确 */
+	html {
+		font-size: 14px; /* 基础字体缩小，适配手机屏幕 */
+	}
+
+	/* 2. 导航栏优化：补充汉堡按钮显示+菜单切换样式，和ui-detail1完全一致 */
+	.nav-bar {
+		padding: 0 15px;
+		height: 50px; /* 降低导航栏高度，适配手机顶部 */
+	}
+
+	.nav-logo a {
+		font-size: 16px;
+	}
+
+	/* 隐藏默认横向菜单，显示汉堡按钮 */
+	.nav-hamburger {
+		display: block;
+	}
+
+	/* 移动端菜单样式（和ui-detail1一致） */
+	.nav-menu {
+		display: none;
+		flex-direction: column;
+		position: absolute;
+		top: 50px;
+		left: 0;
+		width: 100%;
+		background-color: rgba(0, 0, 0, 0.9);
+		padding: 20px 0;
+		gap: 10px;
+	}
+
+	/* 菜单激活样式（显示菜单） */
+	.nav-menu.active {
+		display: flex;
+	}
+
+	.nav-menu li {
+		margin-left: 0; /* 移除横向间距 */
+		text-align: center; /* 文字居中 */
+		white-space: nowrap; /* 防止文字换行 */
+	}
+
+	.nav-menu li a {
+		font-size: 12px; /* 缩小导航文字 */
+	}
+
+	/* 3. 作品集封面优化：解决文字溢出、排版错乱 */
+	.portfolio-cover {
+		padding-top: 70px; /* 适配降低后的导航栏 */
+		justify-content: center;
+		align-items: flex-start; /* 左对齐，适配手机屏幕 */
+	}
+
+	.text-content {
+		padding-left: 0; /* 移除左侧内边距，避免文字超出屏幕 */
+		margin-bottom: 20px;
+		width: 100%;
+		padding: 0 15px; /* 左右留白，不贴边 */
+	}
+
+	.title-cn {
+		font-size: 38px; /* 大幅缩小标题，适配手机 */
+		margin-left: 0; /* 移除左侧间距 */
+		margin-bottom: 10px;
+		text-align: left;
+	}
+
+	.title-en {
+		font-size: 24px; /* 缩小英文标题 */
+		margin-left: 0;
+		margin-bottom: 10px;
+		text-align: left;
+	}
+
+	.subtitle, .value-line {
+		font-size: 16px; /* 缩小副标题和价值线 */
+		margin-left: 0;
+		margin-bottom: 10px;
+		text-align: left;
+		line-height: 1.5; /* 优化行高，避免文字重叠 */
+	}
+
+	/* 4. 滚动箭头优化：缩小尺寸，位置更合理 */
+	.scroll-down-arrow {
+		font-size: 30px; /* 缩小箭头 */
+		bottom: 30px; /* 靠近底部，不被遮挡 */
+	}
+
+	/* 调整“我的简历”文字箭头位置 */
+	.scroll-down-arrow[onclick="scrollToResume()"]:first-of-type {
+		bottom: 80px; /* 与下箭头错开，不重叠 */
+		font-size: 16px;
+	}
+
+	/* 5. 简历区域优化：减小内边距，适配手机 */
+	.resume-container {
+		padding: 30px 15px 60px; /* 大幅减小内边距，左右留白15px */
+	}
+
+	.resume-card {
+		border-radius: 12px; /* 减小圆角，更适配手机 */
+		box-shadow: 0 0 20px rgba(74, 144, 226, 0.2);
+	}
+
+	.resume-left {
+		width: 100%; /* 左侧占满全屏，不再分栏 */
+		border-right: none;
+		border-bottom: 1px solid rgba(74, 144, 226, 0.5); /* 底部边框分隔 */
+		padding: 30px 15px; /* 减小内边距 */
+	}
+
+	.avatar-wrapper {
+		width: 120px; /* 缩小头像 */
+		height: 120px;
+		margin-bottom: 15px;
+	}
+
+	.name {
+		font-size: 24px; /* 缩小姓名 */
+	}
+
+	.job-intention {
+		font-size: 14px; /* 缩小求职意向 */
+		text-align: center;
+		line-height: 1.5;
+	}
+
+	.contact-list p {
+		font-size: 12px; /* 缩小联系方式文字 */
+		justify-content: flex-start;
+		padding-left: 10px; /* 轻微左移，更美观 */
+	}
+
+	/* 6. 简历右侧优化：减小内边距，文字适配 */
+	.resume-right {
+		padding: 25px 15px; /* 大幅减小内边距 */
+	}
+
+	.module-title {
+		font-size: 18px; /* 缩小模块标题 */
+		margin-bottom: 15px;
+		padding-bottom: 8px;
+	}
+
+	/* 技能项优化：移除固定宽度，自适应 */
+	.skill-item {
+		flex-direction: column; /* 垂直排列，避免横向拥挤 */
+		gap: 5px;
+	}
+
+	.skill-label {
+		width: 100%; /* 占满全屏，不再固定宽度 */
+		font-size: 14px;
+	}
+
+	.skill-content {
+		font-size: 12px; /* 缩小技能描述 */
+		line-height: 1.6;
+	}
+
+	/* 经历项优化：垂直排列，避免横向溢出 */
+	.experience-item {
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	.exp-time {
+		width: 100%; /* 时间占满全屏 */
+		font-size: 12px;
+		margin-bottom: 5px;
+	}
+
+	.exp-content h4 {
+		font-size: 14px; /* 缩小经历标题 */
+	}
+
+	.exp-content p {
+		font-size: 12px; /* 缩小经历描述 */
+		line-height: 1.5;
+	}
+
+	/* 荣誉列表优化：缩小文字，优化间距 */
+	.honor-level {
+		font-size: 14px;
+	}
+
+	.honor-item-list {
+		padding-left: 15px; /* 减小左侧缩进 */
+		gap: 4px;
+	}
+
+	.honor-item-list li {
+		font-size: 12px; /* 缩小荣誉文字 */
+		line-height: 1.5;
+	}
+
+	/* 补充资质优化 */
+	.cert-list {
+		font-size: 12px;
+		line-height: 1.6;
+	}
+
+	/* 7. 奖项区域优化：适配手机 */
+	.awards-container {
+		padding: 0 15px 60px; /* 减小内边距 */
+	}
+
+	.awards-title {
+		font-size: 18px; /* 缩小奖项标题 */
+		margin-bottom: 20px;
+	}
+
+	.awards-grid {
+		grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* 减小卡片宽度，适配手机 */
+		gap: 15px; /* 减小卡片间距 */
+	}
+
+	.award-card {
+		border-radius: 8px; /* 减小卡片圆角 */
+	}
+
+	.award-img {
+		height: 160px; /* 减小图片高度，适配手机 */
+		padding: 10px; /* 减小图片内边距 */
+	}
+
+	.award-desc {
+		font-size: 10px; /* 缩小奖项描述 */
+		padding: 8px 10px;
+		line-height: 1.4;
+	}
+
+	/* 8. 大图预览优化：适配手机 */
+	.close-modal {
+		font-size: 24px;
+		right: 15px; 
+		top: 15px;
+	}
+
+	.modal-img {
+		max-width: 95%;
+		max-height: 85%;
+		border-radius: 8px;
+	}
+}

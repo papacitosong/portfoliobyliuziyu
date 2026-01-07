@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>作品详情 - 厕略APP界面设计</title>
+		<link rel="stylesheet" href="css/ui-detail.css">
+	</head>
+	<body>
+		<div class="star-sky" id="starSky"></div>
+
+		<!-- 导航栏 -->
+		<nav class="nav-bar">
+			<div class="nav-logo">
+				<a href="index.html">2022-2026</a>
+			</div>
+			<ul class="nav-menu">
+				<li><a href="index.html">首页</a></li>
+				<li><a href="ui.html">UI设计</a></li>
+				<li><a href="visual.html">信息可视化</a></li>
+				<li><a href="web.html">编程设计与开发</a></li>
+				<li><a href="game.html">游戏设计与开发</a></li>
+				<li><a href="video.html">视频剪辑</a></li>
+				<li><a href="designe.html">平面设计</a></li>
+			</ul>
+			<div class="nav-hamburger">☰</div>
+		</nav>
+
+		<!-- 详情页主体 -->
+		<div class="detail-container">
+			<!-- 返回按钮 -->
+			<a href="ui.html" class="back-btn">← 返回作品列表</a>
+
+			<!-- 作品标题 -->
+			<div class="detail-title">
+				<h2>厕 略</h2>
+				<p>智慧城市 | 厕所导航</p>
+			</div>
+
+			<!-- 文字说明区域 -->
+			<div class="detail-section">
+				<h3>作品说明</h3>
+				<div class="text-desc">
+					<p><strong>设计背景：</strong>厕略App是基于智慧城市为背景，寻找厕所的一个智能型软件，主要源于城市化进程中，公众对厕所便捷服务的需求提高，通过“厕略”人们可以快速搜寻到离自己最近的厕所。解决用户在寻找厕所时导航不精准、信息不详细的情况，同时减少排队时间。另外，“厕略”附带健康检测功能，通过扫描智能检测用户的便便，从而推断出用户身体健康情况，反馈给用户并给用户提出合适的建议。
+					</p>
+					<p><strong>设计亮点：</strong>
+						<br>1. 精准定位：结合GPS与线下标注，实时显示周边厕所位置、距离及使用状态；
+						<br>2. 多维度筛选：支持按“无障碍、母婴室、免费/收费”等条件筛选，满足不同用户需求；
+						<br>3. 健康式生活：智能检测便便情况，给出健康建议。
+					</p>
+					<p><strong>设计工具：</strong>Figma、Axure、Spline、Rotate、Photoshop</p>
+				</div>
+			</div>
+
+			<!-- 视频展示区域（B站嵌入，无扁形问题） -->
+			<div class="detail-section">
+				<h3>作品演示视频</h3>
+				<div class="video-wrapper">
+					<iframe
+						src="//player.bilibili.com/player.html?isOutside=true&aid=115840452138633&bvid=BV1gjipBqEDS&cid=35197551404&p=1"
+						scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+				</div>
+			</div>
+
+			<!-- 展板/图片展示区域 -->
+			<div class="detail-section">
+				<h3>作品展板/界面截图</h3>
+				<div class="image-grid">
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/ui/%E5%8E%95%E7%95%A5-%E5%AE%A3%E4%BC%A0%E6%B5%B7%E6%8A%A5.jpg" alt="海报" class="clickable-img">
+					</div>
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/ui/%E5%8E%95%E7%95%A5-%E5%B1%95%E6%9D%BF1.jpg" alt="展板1" class="clickable-img">
+					</div>
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/ui/%E5%8E%95%E7%95%A5-%E5%B1%95%E6%9D%BF2.jpg" alt="展板2" class="clickable-img">
+					</div>
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/ui/%E5%8E%95%E7%95%A5-%E5%B1%95%E6%9D%BF3.jpg" alt="展板3" class="clickable-img">
+					</div>
+				</div>
+			</div>
+
+			<!-- 获奖展示 -->
+			<div class="detail-section">
+				<h3>作品获奖情况</h3>
+				<div class="image-grid">
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/ui/%E5%8E%95%E7%95%A5-%E5%A5%BD%E5%88%9B%E6%84%8F%E7%9C%81%E4%BA%8C.jpg" alt="海报" class="clickable-img">
+					</div>
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/ui/%E5%8E%95%E7%95%A5-ICCC.jpg" alt="展板1" class="clickable-img">
+					</div>
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/ui/%E5%8E%95%E7%95%A5-UVADC.jpg" alt="展板2" class="clickable-img">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 项目成员（单独布局，匹配CSS样式） -->
+		<div class="simple-member">
+			<p>项目成员：刘子瑜、杨梵</p>
+		</div>
+
+		<!-- 大图预览遮罩层 -->
+		<div class="img-modal" id="imgModal">
+			<span class="close-modal" id="closeModal">&times;</span>
+			<img class="modal-img" id="modalImg" src="" alt="大图预览">
+		</div>
+
+		<script>
+			// 生成星空背景
+			window.onload = function() {
+				const starSky = document.getElementById('starSky');
+				const starCount = 100; // 详情页星星数量
+
+				for (let i = 0; i < starCount; i++) {
+					const star = document.createElement('div');
+					star.className = 'star';
+
+					// 随机位置
+					star.style.left = Math.random() * 100 + 'vw';
+					star.style.top = Math.random() * 100 + 'vh';
+
+					// 随机大小
+					const starSize = Math.random() * 2 + 1;
+					star.style.width = starSize + 'px';
+					star.style.height = starSize + 'px';
+
+					// 随机动画延迟和时长
+					star.style.animationDelay = Math.random() * 5 + 's';
+					star.style.animationDuration = Math.random() * 3 + 2 + 's';
+
+					starSky.appendChild(star);
+				}
+			}
+
+			// 大图预览逻辑
+			const modal = document.getElementById('imgModal');
+			const modalImg = document.getElementById('modalImg');
+			const closeBtn = document.getElementById('closeModal');
+			const clickableImgs = document.querySelectorAll('.clickable-img');
+
+			clickableImgs.forEach(img => {
+				img.onclick = function() {
+					modal.style.display = 'flex';
+					modalImg.src = this.src;
+					modalImg.alt = this.alt;
+				}
+			});
+
+			closeBtn.onclick = function() {
+				modal.style.display = 'none';
+			}
+
+			modal.onclick = function(e) {
+				if (e.target === modal) {
+					modal.style.display = 'none';
+				}
+			}
+
+			document.onkeydown = function(e) {
+				if (e.key === 'Escape' && modal.style.display === 'flex') {
+					modal.style.display = 'none';
+				}
+			}
+
+			const hamburger = document.querySelector('.nav-hamburger');
+			const navMenu = document.querySelector('.nav-menu');
+			hamburger.onclick = function() {
+				navMenu.classList.toggle('active');
+			}
+		</script>
+	</body>
+</html>

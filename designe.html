@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>平面设计 - 创想·生长录</title>
+		<link rel="stylesheet" href="css/ui.css">
+		<style>
+			.awards-grid {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 20px;
+				padding: 20px 15px;
+				max-width: 1400px;
+				margin: 0 auto;
+			}
+
+			.award-card {
+				width: calc(33.33% - 20px); 
+				min-width: 280px; 
+				border: 1px solid rgba(255,255,255,0.2); 
+				border-radius: 8px; 
+				overflow: hidden; 
+				background: transparent; 
+				box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				aspect-ratio: 3/4;
+			}
+			
+			.award-img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				cursor: pointer; 
+				background-color: transparent;
+			}
+
+			.img-modal {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background: rgba(0,0,0,0.85); 
+				justify-content: center;
+				align-items: center;
+				z-index: 9999; 
+				padding: 20px; 
+			}
+			
+			.close-modal {
+				position: absolute;
+				top: 20px;
+				right: 40px;
+				font-size: 40px;
+				color: #fff;
+				cursor: pointer;
+				z-index: 10000;
+				@media (max-width: 768px) {
+					font-size: 30px;
+					right: 20px;
+					top: 15px;
+				}
+			}
+			
+			.modal-img {
+				max-width: 90%;
+				max-height: 90%;
+				object-fit: contain; 
+			}
+			
+			@media (max-width: 768px) {
+				.award-card {
+					width: calc(50% - 15px);
+					min-width: 140px;
+					aspect-ratio: 3/4;
+				}
+			}
+			
+			@media (max-width: 480px) {
+				.award-card {
+					width: 100%;
+					max-width: 320px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="star-sky" id="starSky"></div>
+		<!-- 导航栏-->
+		<nav class="nav-bar">
+			<div class="nav-logo">
+				<a href="index.html">2022-2026</a>
+			</div>
+			<ul class="nav-menu">
+				<li><a href="index.html">首页</a></li>
+				<li><a href="ui.html">UI设计</a></li>
+				<li><a href="visual.html">信息可视化</a></li>
+				<li><a href="web.html">编程设计与开发</a></li>
+				<li><a href="game.html">游戏设计与开发</a></li>
+				<li><a href="video.html">视频剪辑</a></li>
+				<li><a href="designe.html">平面设计</a></li>
+			</ul>
+			<div class="nav-hamburger">☰</div>
+		</nav>
+
+		<!-- 平面设计（广告作品）展示区域 -->
+		<div class="ui-works-container">
+			<div class="ui-title">
+				<h2>平面设计</h2>
+				<p></p>
+			</div>
+
+			<!-- 作品网格容器-->
+			<div class="awards-grid" id="uiWorksGrid"></div>
+		</div>
+
+		<!-- 大图预览遮罩层 -->
+		<div class="img-modal" id="imgModal">
+			<span class="close-modal" id="closeModal">&times;</span>
+			<img class="modal-img" id="modalImg" src="" alt="作品大图预览">
+		</div>
+
+		<script>
+			// 星空生成逻辑
+			function createStarSky() {
+				const starSky = document.getElementById("starSky");
+				const starCount = 150; 
+				for (let i = 0; i < starCount; i++) {
+					const star = document.createElement("div");
+					star.className = "star";
+					const starSize = Math.random() * 2 + 1;
+					star.style.width = `${starSize}px`;
+					star.style.height = `${starSize}px`;
+					star.style.left = `${Math.random() * 100}vw`;
+					star.style.top = `${Math.random() * 100}vh`;
+					star.style.animationDelay = `${Math.random() * 5}s`;
+					star.style.animationDuration = `${Math.random() * 2 + 2}s`;
+					starSky.appendChild(star);
+				}
+			}
+
+			window.onload = function() {
+				createStarSky();
+
+				// 平面设计作品数据
+				const uiWorksData = [
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A11.jpg",
+						imgAlt: "平面设计作品1"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A12.jpg",
+						imgAlt: "平面设计作品2"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A13.jpg",
+						imgAlt: "平面设计作品3"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A14.jpg",
+						imgAlt: "平面设计作品4"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A15.jpg",
+						imgAlt: "平面设计作品5"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A16.jpg",
+						imgAlt: "平面设计作品6"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A17.jpg",
+						imgAlt: "平面设计作品7"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A18.jpg",
+						imgAlt: "平面设计作品8"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A19.jpg",
+						imgAlt: "平面设计作品9"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A110.jpg",
+						imgAlt: "平面设计作品10"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A111.jpg",
+						imgAlt: "平面设计作品11"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A112.jpg",
+						imgAlt: "平面设计作品12"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A113.jpg",
+						imgAlt: "平面设计作品13"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A114.jpg",
+						imgAlt: "平面设计作品14"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A115.jpg",
+						imgAlt: "平面设计作品15"
+					},
+					// {
+					// 	imgSrc: "images/designe/平面设计16.tif",
+					// 	imgAlt: "平面设计作品16"
+					// },
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A117.jpg",
+						imgAlt: "平面设计作品17"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A118.jpg",
+						imgAlt: "平面设计作品18"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A119.jpg",
+						imgAlt: "平面设计作品19"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A120.jpg",
+						imgAlt: "平面设计作品20"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A121.jpg",
+						imgAlt: "平面设计作品21"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A122.jpg",
+						imgAlt: "平面设计作品22"
+					},
+					{
+						imgSrc: "https://lllzyyy.space/images/designe/%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A123.jpg",
+						imgAlt: "平面设计作品23"
+					}
+				];
+
+				// 动态生成统一尺寸的作品卡片
+				const uiWorksGrid = document.getElementById("uiWorksGrid");
+				uiWorksData.forEach(work => {
+					// 创建统一大小的卡片框
+					const workCard = document.createElement("div");
+					workCard.className = "award-card";
+
+					// 作品图片
+					const workImg = document.createElement("img");
+					workImg.className = "award-img clickable-img";
+					workImg.src = work.imgSrc;
+					workImg.alt = work.imgAlt;
+
+					// 组装卡片
+					workCard.appendChild(workImg);
+					uiWorksGrid.appendChild(workCard);
+				});
+
+				// 大图预览逻辑
+				const modal = document.getElementById('imgModal');
+				const modalImg = document.getElementById('modalImg');
+				const closeBtn = document.getElementById('closeModal');
+				const clickableImgs = document.querySelectorAll('.clickable-img');
+
+				// 点击图片显示大图
+				clickableImgs.forEach(img => {
+					img.onclick = function() {
+						modal.style.display = 'flex';
+						modalImg.src = this.src;
+						modalImg.alt = this.alt;
+					}
+				});
+
+				// 点击关闭按钮隐藏大图
+				closeBtn.onclick = () => modal.style.display = 'none';
+
+				// 点击遮罩层空白处隐藏大图
+				modal.onclick = (e) => e.target === modal && (modal.style.display = 'none');
+
+				// 按下ESC键隐藏大图
+				document.onkeydown = (e) => e.key === 'Escape' && modal.style.display === 'flex' && (modal.style.display = 'none');
+			};
+			const hamburger = document.querySelector('.nav-hamburger');
+			const navMenu = document.querySelector('.nav-menu');
+			hamburger.onclick = function() {
+				navMenu.classList.toggle('active');
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>编程设计与开发 - 创想·生长录</title>
+		<link rel="stylesheet" href="css/ui.css">
+	</head>
+	<body>
+		<div class="star-sky" id="starSky"></div>
+		<nav class="nav-bar">
+			<div class="nav-logo">
+				<a href="index.html">2022-2026</a>
+			</div>
+			<ul class="nav-menu">
+				<li><a href="index.html">首页</a></li>
+				<li><a href="ui.html">UI设计</a></li>
+				<li><a href="visual.html">信息可视化</a></li>
+				<li><a href="web.html">编程设计与开发</a></li>
+				<li><a href="game.html">游戏设计与开发</a></li>
+				<li><a href="video.html">视频剪辑</a></li>
+				<li><a href="designe.html">平面设计</a></li>
+			</ul>
+			<div class="nav-hamburger">☰</div>
+		</nav>
+
+		<!-- UI设计作品展示区域 -->
+		<div class="ui-works-container">
+			<div class="ui-title">
+				<h2>编程设计与开发</h2>
+				<p>聚焦编程设计与开发核心能力</p>
+			</div>
+			<div class="ui-works-list" id="uiWorksList"></div>
+		</div>
+
+		<script>
+			// 星空生成逻辑（原有代码，无需修改）
+			function createStarSky() {
+				const starSky = document.getElementById("starSky");
+				const starCount = 150;
+
+				for (let i = 0; i < starCount; i++) {
+					const star = document.createElement("div");
+					star.className = "star";
+					const starSize = Math.random() * 2 + 1;
+					star.style.width = `${starSize}px`;
+					star.style.height = `${starSize}px`;
+					star.style.left = `${Math.random() * 100}vw`;
+					star.style.top = `${Math.random() * 100}vh`;
+					star.style.animationDelay = `${Math.random() * 5}s`;
+					star.style.animationDuration = `${Math.random() * 2 + 2}s`;
+					starSky.appendChild(star);
+				}
+			}
+
+			// 页面加载后执行
+			window.onload = function() {
+				createStarSky(); // 生成星空
+
+				const uiWorksData = [{
+					imgSrc: "https://lllzyyy.space/images/web/%E5%B7%A7%E6%82%A6.png",
+					imgAlt: "巧悦",
+					title: "巧悦",
+					desc: "巧克力零售商城",
+					detailHref: "web-detail1.html"
+				}];
+
+				const uiWorksList = document.getElementById("uiWorksList");
+				for (let i = 0; i < uiWorksData.length; i++) {
+					const cardLink = document.createElement("a");
+					cardLink.className = "card-link";
+					cardLink.href = uiWorksData[i].detailHref;
+
+					const workCard = document.createElement("div");
+					workCard.className = "ui-work-card";
+
+					const imgContainer = document.createElement("div");
+					imgContainer.className = "work-img-container";
+					const workImg = document.createElement("img");
+					workImg.src = uiWorksData[i].imgSrc;
+					workImg.alt = uiWorksData[i].imgAlt;
+					imgContainer.appendChild(workImg);
+
+					const workInfo = document.createElement("div");
+					workInfo.className = "work-info";
+					const workTitle = document.createElement("h3");
+					workTitle.textContent = uiWorksData[i].title;
+					const workDesc = document.createElement("p");
+					workDesc.textContent = uiWorksData[i].desc;
+					workInfo.appendChild(workTitle);
+					workInfo.appendChild(workDesc);
+
+					workCard.appendChild(imgContainer);
+					workCard.appendChild(workInfo);
+					cardLink.appendChild(workCard);
+					uiWorksList.appendChild(cardLink);
+				}
+			};
+
+			// ============== 关键新增：汉堡按钮JS逻辑==============
+			const hamburger = document.querySelector('.nav-hamburger');
+			const navMenu = document.querySelector('.nav-menu');
+			hamburger.onclick = function() {
+				navMenu.classList.toggle('active');
+			}
+			// ===============================================================
+		</script>
+	</body>
+</html>

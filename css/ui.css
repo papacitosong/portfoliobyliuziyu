@@ -1,0 +1,294 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* 星空背景样式 */
+.star-sky {
+	width: 100vw;
+	height: 100vh;
+	background-color: #0a0a1a;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+.star {
+	position: absolute;
+	background-color: #fff;
+	border-radius: 50%;
+	opacity: 0;
+	animation: starFloat 3s infinite ease-in-out;
+}
+
+@keyframes starFloat {
+	0% {
+		transform: translateY(0);
+		opacity: 0;
+	}
+
+	50% {
+		transform: translateY(-10px);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 0;
+	}
+}
+
+body {
+	font-family: "Microsoft Yahei", sans-serif;
+	background-color: #121224;
+	color: #fff;
+	overflow-x: hidden;
+}
+
+.nav-bar {
+	width: 100%;
+	height: 60px;
+	background-color: rgba(0, 0, 0, 0.7);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 40px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+
+.nav-logo a {
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.nav-menu {
+	display: flex;
+	list-style: none;
+}
+
+.nav-menu li {
+	margin-left: 30px;
+}
+
+.nav-menu li a {
+	color: #fff;
+	font-size: 16px;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+	color: #4a90e2;
+}
+
+/* 新增：汉堡按钮基础样式（默认隐藏，与home.css一致） */
+.nav-hamburger {
+	display: none;
+	cursor: pointer;
+	font-size: 24px;
+	color: #fff;
+}
+
+/* 新增UI设计页面专属样式 */
+.ui-works-container {
+	width: 100%;
+	padding: 100px 50px 50px;
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+.ui-title {
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+.ui-title h2 {
+	font-size: 48px;
+	color: #fff;
+	text-shadow: 0 0 8px rgba(74, 144, 226, 0.8);
+	margin-bottom: 15px;
+}
+
+.ui-title p {
+	font-size: 20px;
+	color: #eee;
+}
+
+/* 作品列表布局 - 网格布局，适配多作品 */
+.ui-works-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+	gap: 40px;
+}
+
+/* 作品卡片样式 */
+.ui-work-card {
+	background-color: rgba(255, 255, 255, 0.05);
+	border-radius: 12px;
+	overflow: hidden;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ui-work-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 10px 20px rgba(74, 144, 226, 0.2);
+}
+
+/* A3图片专用容器（固定宽高比，完美适配） */
+.work-img-container {
+	width: 100%;
+	padding-bottom: 141.4%;
+	position: relative;
+	overflow: hidden;
+	border-bottom: 2px solid rgba(74, 144, 226, 0.5);
+}
+
+.work-img-container img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	/* object-fit: contain; 完整展示A3图片（不裁剪，推荐） */
+	/* object-fit: cover; 裁剪适配（保持卡片视觉统一） */
+	object-fit: contain;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.work-info {
+	padding: 25px;
+}
+
+.work-info h3 {
+	font-size: 24px;
+	color: #fff;
+	margin-bottom: 10px;
+}
+
+.work-info p {
+	font-size: 16px;
+	color: #ccc;
+	line-height: 1.6;
+}
+
+/* 作品卡片跳转链接样式 */
+.card-link {
+	text-decoration: none;
+	color: inherit;
+	display: block;
+}
+
+/* -------------------------- 移动端适配核心优化（768px及以下） -------------------------- */
+@media (max-width: 768px) {
+
+	/* 1. 导航栏适配：补充汉堡按钮显示+菜单切换样式，与home.css完全一致 */
+	.nav-bar {
+		height: 50px;
+		padding: 0 15px;
+	}
+
+	.nav-logo a {
+		font-size: 16px;
+	}
+
+	/* 显示汉堡按钮，隐藏默认横向菜单 */
+	.nav-hamburger {
+		display: block;
+	}
+
+	/* 移动端菜单样式（垂直排列，绝对定位） */
+	.nav-menu {
+		display: none;
+		flex-direction: column;
+		position: absolute;
+		top: 50px;
+		left: 0;
+		width: 100%;
+		background-color: rgba(0, 0, 0, 0.9);
+		padding: 20px 0;
+		gap: 10px;
+		/* 修正：将 overflow-x: none; 改为 overflow-x: hidden; */
+		overflow-x: hidden;
+		padding-bottom: 0;
+	}
+
+	/* 菜单激活样式（显示菜单） */
+	.nav-menu.active {
+		display: flex;
+	}
+
+	.nav-menu li {
+		margin-left: 0;
+		/* 移除横向间距，垂直排列居中 */
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	.nav-menu li a {
+		font-size: 12px;
+	}
+
+	/* 2. UI作品容器适配：减小内边距，避免文字/卡片溢出 */
+	.ui-works-container {
+		padding: 80px 15px 30px;
+	}
+
+	/* 3. 标题适配：缩小字体，减小间距 */
+	.ui-title {
+		margin-bottom: 30px;
+	}
+
+	.ui-title h2 {
+		font-size: 28px;
+		margin-bottom: 10px;
+	}
+
+	.ui-title p {
+		font-size: 14px;
+		line-height: 1.5;
+	}
+
+	/* 4. 作品列表适配：减小卡片宽度和间距 */
+	.ui-works-list {
+		grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+		gap: 20px;
+	}
+
+	/* 5. 作品卡片适配：优化内边距和字体 */
+	.ui-work-card {
+		border-radius: 8px;
+	}
+
+	/* 6. 图片容器：保持宽高比不变，优化底部边框 */
+	.work-img-container {
+		border-bottom: 1px solid rgba(74, 144, 226, 0.5);
+	}
+
+	/* 7. 作品信息适配：减小内边距和字体 */
+	.work-info {
+		padding: 15px;
+	}
+
+	.work-info h3 {
+		font-size: 18px;
+		margin-bottom: 8px;
+	}
+
+	.work-info p {
+		font-size: 12px;
+		line-height: 1.4;
+	}
+
+	/* 8. 悬浮效果优化：移动端弱化悬浮阴影，更流畅 */
+	.ui-work-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 5px 10px rgba(74, 144, 226, 0.2);
+	}
+}

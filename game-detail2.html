@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>作品详情 - Chost Coin</title>
+		<link rel="stylesheet" href="css/ui-detail.css">
+		<style>
+			.download-section {
+				margin: 40px 0;
+				padding: 20px;
+				background-color: rgba(255, 255, 255, 0.05);
+				border-radius: 8px;
+				border-left: 4px solid #4a90e2;
+			}
+
+			.download-section h4 {
+				font-size: 20px;
+				color: #4a90e2;
+				margin-bottom: 15px;
+			}
+
+			.download-links a {
+				display: inline-block;
+				padding: 10px 25px;
+				margin: 0 10px 10px 0;
+				background-color: #4a90e2;
+				color: #fff;
+				text-decoration: none;
+				border-radius: 6px;
+				transition: background-color 0.3s ease;
+			}
+
+			.download-links a:hover {
+				background-color: #8ab4f8;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="star-sky" id="starSky"></div>
+
+		<!-- 导航栏 -->
+		<nav class="nav-bar">
+			<div class="nav-logo">
+				<a href="index.html">2022-2026</a>
+			</div>
+			<ul class="nav-menu">
+				<li><a href="index.html">首页</a></li>
+				<li><a href="ui.html">UI设计</a></li>
+				<li><a href="visual.html">信息可视化</a></li>
+				<li><a href="web.html">编程设计与开发</a></li>
+				<li><a href="game.html">游戏设计与开发</a></li>
+				<li><a href="video.html">视频剪辑</a></li>
+				<li><a href="designe.html">平面设计</a></li>
+			</ul>
+			<div class="nav-hamburger">☰</div>
+		</nav>
+
+		<!-- 详情页主体 -->
+		<div class="detail-container">
+			<!-- 返回按钮：返回游戏作品列表 -->
+			<a href="game.html" class="back-btn">← 返回作品列表</a>
+
+			<!-- 作品标题 -->
+			<div class="detail-title">
+				<h2>Chost Coin</h2>
+				<p>城市幽灵｜守护金币｜获取金币</p>
+			</div>
+
+			<!-- 文字说明区域-->
+			<div class="detail-section">
+				<h3>作品说明</h3>
+				<div class="text-desc" style="line-height: 1.8;">
+					<p><strong>一、游戏核心概述</strong><br>
+						本游戏是一款3D开放场景冒险类游戏，以“城市中收集幽灵看守的金币”为核心玩法，融合探索、躲避与互动元素，通过低多边形风格的城市场景，为玩家提供兼具趣味性与策略性的冒险体验。</p>
+
+					<p><strong>二、核心玩法</strong><br>
+						▶ 目标：在城市场景内收集10枚被幽灵看守的金币，同时维持生命值（初始20点），达成收集目标即可通关；<br>
+						▶ 操作：A/S/W/D控制移动、空格跳跃、鼠标控制视角，按E键释放火盆；<br>
+						▶ 循环：触碰幽灵扣1点生命值（生命值为0则失败），收集金币推进进度，用火盆可消灭幽灵，形成“探索-躲避-收集”的冒险闭环。</p>
+
+					<p><strong>三、核心元素</strong><br>
+						▶ 角色：低多边形风格的3D可操控角色，动作反馈清晰，支持自由视角转动；<br>
+						▶ 障碍：游荡的幽灵敌人，触碰会扣除生命值，需通过躲避或火盆消灭；<br>
+						▶ 奖励：被幽灵看守的金币，分布在城市场景的不同区域，引导玩家探索；<br>
+						▶ 场景：低多边形风格的城市开放场景，包含建筑、植被等元素，提供自由探索空间。</p>
+
+					<p><strong>四、游戏特色</strong><br>
+						▶ 策略性互动：不仅需要躲避幽灵，还可通过火盆主动消灭敌人，平衡躲避与进攻的策略；<br>
+						▶ 自由探索：开放城市场景支持自由移动，金币分布引导玩家自主探索不同区域；<br>
+						▶ 轻量化体验：单局时长适中，操作门槛低，同时兼具“生命值管理”的轻度策略性。</p>
+
+					<p><strong>五、通关逻辑</strong><br>
+						▶ 进度判定：收集满10枚金币即可完成通关；<br>
+						▶ 失败条件：生命值降至0则挑战失败，需重新开始；<br>
+						▶ 策略空间：可选择“躲避幽灵快速收集”或“用火盆清理区域”的不同通关思路。</p>
+
+					<p><strong>设计工具</strong>：Unity、C4D、Llustrator</p>
+				</div>
+			</div>
+
+			<!-- 视频展示区域-->
+			<div class="detail-section">
+				<h3>作品演示视频</h3>
+				<div class="video-wrapper">
+					<iframe
+						src="//player.bilibili.com/player.html?isOutside=true&aid=115840418584597&bvid=BV1KxipBhETY&cid=35197290950&p=1"
+						scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+				</div>
+			</div>
+
+			<!-- 双系统下载链接区域-->
+			<div class="download-section">
+				<h4>游戏安装包下载</h4>
+				<div class="download-links">
+					<!-- 替换为你的实际软件包路径 -->
+					<a href="https://www.123865.com/s/7H5Cvd-CEPod" target="_blank">Windows 系统下载</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- 大图预览遮罩层 -->
+		<div class="img-modal" id="imgModal">
+			<span class="close-modal" id="closeModal">&times;</span>
+			<img class="modal-img" id="modalImg" src="" alt="大图预览">
+		</div>
+
+		<script>
+			// 生成星空背景
+			window.onload = function() {
+				const starSky = document.getElementById('starSky');
+				const starCount = 100;
+
+				for (let i = 0; i < starCount; i++) {
+					const star = document.createElement('div');
+					star.className = 'star';
+
+					// 随机位置
+					star.style.left = Math.random() * 100 + 'vw';
+					star.style.top = Math.random() * 100 + 'vh';
+
+					// 随机大小
+					const starSize = Math.random() * 2 + 1;
+					star.style.width = starSize + 'px';
+					star.style.height = starSize + 'px';
+
+					// 随机动画延迟和时长
+					star.style.animationDelay = Math.random() * 5 + 's';
+					star.style.animationDuration = Math.random() * 3 + 2 + 's';
+
+					starSky.appendChild(star);
+				}
+			}
+
+			// 大图预览逻辑
+			const modal = document.getElementById('imgModal');
+			const modalImg = document.getElementById('modalImg');
+			const closeBtn = document.getElementById('closeModal');
+			const clickableImgs = document.querySelectorAll('.clickable-img');
+
+			clickableImgs.forEach(img => {
+				img.onclick = function() {
+					modal.style.display = 'flex';
+					modalImg.src = this.src;
+					modalImg.alt = this.alt;
+				}
+			});
+
+			closeBtn.onclick = function() {
+				modal.style.display = 'none';
+			}
+
+			modal.onclick = function(e) {
+				if (e.target === modal) {
+					modal.style.display = 'none';
+				}
+			}
+
+			document.onkeydown = function(e) {
+				if (e.key === 'Escape' && modal.style.display === 'flex') {
+					modal.style.display = 'none';
+				}
+			}
+			const hamburger = document.querySelector('.nav-hamburger');
+			const navMenu = document.querySelector('.nav-menu');
+			hamburger.onclick = function() {
+				navMenu.classList.toggle('active');
+			}
+		</script>
+	</body>
+</html>

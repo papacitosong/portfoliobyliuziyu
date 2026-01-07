@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>作品详情 - Chost Coin</title>
+		<link rel="stylesheet" href="css/ui-detail.css">
+		<style>
+			.download-section {
+				margin: 40px 0;
+				padding: 20px;
+				background-color: rgba(255, 255, 255, 0.05);
+				border-radius: 8px;
+				border-left: 4px solid #4a90e2;
+			}
+
+			.download-section h4 {
+				font-size: 20px;
+				color: #4a90e2;
+				margin-bottom: 15px;
+			}
+
+			.download-links a {
+				display: inline-block;
+				padding: 10px 25px;
+				margin: 0 10px 10px 0;
+				background-color: #4a90e2;
+				color: #fff;
+				text-decoration: none;
+				border-radius: 6px;
+				transition: background-color 0.3s ease;
+			}
+
+			.download-links a:hover {
+				background-color: #8ab4f8;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="star-sky" id="starSky"></div>
+
+		<!-- 导航栏 -->
+		<nav class="nav-bar">
+			<div class="nav-logo">
+				<a href="index.html">2022-2026</a>
+			</div>
+			<ul class="nav-menu">
+				<li><a href="index.html">首页</a></li>
+				<li><a href="ui.html">UI设计</a></li>
+				<li><a href="visual.html">信息可视化</a></li>
+				<li><a href="web.html">编程设计与开发</a></li>
+				<li><a href="game.html">游戏设计与开发</a></li>
+				<li><a href="video.html">视频剪辑</a></li>
+				<li><a href="designe.html">平面设计</a></li>
+			</ul>
+			<div class="nav-hamburger">☰</div>
+		</nav>
+
+		<!-- 详情页主体 -->
+		<div class="detail-container">
+			<a href="web.html" class="back-btn">← 返回作品列表</a>
+
+			<!-- 作品标题 -->
+			<div class="detail-title">
+				<h2>巧 悦 APP 开发</h2>
+				<p>巧克力零售商城</p>
+			</div>
+
+			<!-- 文字说明区域-->
+			<div class="detail-section">
+				<h3>作品说明</h3>
+				<div class="text-desc" style="line-height: 1.8;">
+					<p><strong>一、应用核心概述</strong><br>
+						本应用是一款基于移动端开发的巧克力主题一站式购物平台，专为巧克力爱好者打造，以“轻量化交互+清晰功能架构”为核心，实现商品浏览、分类筛选、购物结算、订单管理等全流程服务，适配移动端碎片化使用场景，满足日常解馋、节日送礼等多样化需求，提供流畅且低门槛的购物体验。
+					</p>
+
+					<p><strong>二、核心功能</strong><br>
+						▶ 核心服务：首页新品/促销展示、口味分类精准筛选、关键词搜索、购物车管理、多状态订单查询、个人地址维护；<br>
+						▶ 操作逻辑：底部导航栏切换四大核心模块，操作触发弹窗/Toast反馈，数据本地持久化留存，页面切换自动加载；<br>
+						▶ 闭环流程：商品浏览→加入购物车→结算下单→订单跟踪→确认收货，形成完整的移动端购物闭环。</p>
+
+					<p><strong>三、核心元素</strong><br>
+						▶ 视觉设计：以巧克力棕色为主色调，极简风格图标，统一的商品卡片/订单卡片布局，重点功能入口突出；<br>
+						▶ 页面组件：自定义搜索组件、轮播组件、商品卡片组件等，复用性强，保障界面一致性；<br>
+						▶ 交互元素：带视觉反馈的按钮、逻辑清晰的弹窗、必填项校验表单，提升操作流畅度；<br>
+						▶ 信息展示：商品详情完整呈现卖点与保障，订单页清晰展示物流状态，个人中心功能分类明确。</p>
+
+					<p><strong>四、应用特色</strong><br>
+						▶ 精准适配：专为移动端优化，适配不同屏幕尺寸，支持碎片化时间快速操作；<br>
+						▶ 高效实用：分类筛选+关键词搜索双重定位商品，购物车自动计算合计，订单状态一目了然；<br>
+						▶ 数据安全：本地存储持久化保存用户信息、订单数据，操作便捷且保障数据一致性；<br>
+						▶ 体验流畅：路由切换无卡顿，交互反馈即时可见，功能架构清晰，新手易上手。</p>
+
+					<p><strong>五、技术实现逻辑</strong><br>
+						▶ 开发架构：基于uni-app跨端框架开发，兼容移动端多平台，降低开发与维护成本；<br>
+						▶ 核心技术：采用Vue.js、JavaScript、SCSS开发，运用本地存储实现数据持久化，计算属性优化筛选性能；<br>
+						▶ 流程保障：页面间参数传递通过JSON序列化/反序列化实现，组件化开发提升代码复用性，确保功能稳定运行。</p>
+
+					<p><strong>开发工具与技术</strong>：HBuilderX、uni-app、Vue.js、JavaScript、SCSS</p>
+				</div>
+			</div>
+
+			<!-- 视频展示区域-->
+			<div class="detail-section">
+				<h3>作品演示视频</h3>
+				<div class="video-wrapper">
+					<iframe
+						src="//player.bilibili.com/player.html?isOutside=true&aid=115840485692567&bvid=BV1uJipBvELv&cid=35197749646&p=1"
+						scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+				</div>
+			</div>
+
+			<!-- 双系统下载链接区域-->
+			<div class="download-section">
+				<h4>APP安装包下载</h4>
+				<div class="download-links">
+					<a href="https://www.123865.com/s/7H5Cvd-XEPod" target="_blank">手机安装包下载</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- 大图预览遮罩层 -->
+		<div class="img-modal" id="imgModal">
+			<span class="close-modal" id="closeModal">&times;</span>
+			<img class="modal-img" id="modalImg" src="" alt="大图预览">
+		</div>
+
+		<script>
+			// 生成星空背景
+			window.onload = function() {
+				const starSky = document.getElementById('starSky');
+				const starCount = 100; // 详情页星星数量
+
+				for (let i = 0; i < starCount; i++) {
+					const star = document.createElement('div');
+					star.className = 'star';
+
+					// 随机位置
+					star.style.left = Math.random() * 100 + 'vw';
+					star.style.top = Math.random() * 100 + 'vh';
+
+					// 随机大小
+					const starSize = Math.random() * 2 + 1;
+					star.style.width = starSize + 'px';
+					star.style.height = starSize + 'px';
+
+					// 随机动画延迟和时长
+					star.style.animationDelay = Math.random() * 5 + 's';
+					star.style.animationDuration = Math.random() * 3 + 2 + 's';
+
+					starSky.appendChild(star);
+				}
+			}
+
+			// 大图预览逻辑
+			const modal = document.getElementById('imgModal');
+			const modalImg = document.getElementById('modalImg');
+			const closeBtn = document.getElementById('closeModal');
+			const clickableImgs = document.querySelectorAll('.clickable-img');
+
+			clickableImgs.forEach(img => {
+				img.onclick = function() {
+					modal.style.display = 'flex';
+					modalImg.src = this.src;
+					modalImg.alt = this.alt;
+				}
+			});
+
+			closeBtn.onclick = function() {
+				modal.style.display = 'none';
+			}
+
+			modal.onclick = function(e) {
+				if (e.target === modal) {
+					modal.style.display = 'none';
+				}
+			}
+
+			document.onkeydown = function(e) {
+				if (e.key === 'Escape' && modal.style.display === 'flex') {
+					modal.style.display = 'none';
+				}
+			}
+			const hamburger = document.querySelector('.nav-hamburger');
+			const navMenu = document.querySelector('.nav-menu');
+			hamburger.onclick = function() {
+				navMenu.classList.toggle('active');
+			}
+		</script>
+	</body>
+</html>

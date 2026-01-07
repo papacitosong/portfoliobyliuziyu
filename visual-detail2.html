@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>作品详情 - 伏羲八卦数据可视化设计</title>
+		<link rel="stylesheet" href="css/ui-detail.css">
+	</head>
+	<body>
+		<div class="star-sky" id="starSky"></div>
+
+		<!-- 导航栏 -->
+		<nav class="nav-bar">
+			<div class="nav-logo">
+				<a href="index.html">2022-2026</a>
+			</div>
+			<ul class="nav-menu">
+				<li><a href="index.html">首页</a></li>
+				<li><a href="ui.html">UI设计</a></li>
+				<li><a href="visual.html">信息可视化</a></li>
+				<li><a href="web.html">编程设计与开发</a></li>
+				<li><a href="game.html">游戏设计与开发</a></li>
+				<li><a href="video.html">视频剪辑</a></li>
+				<li><a href="designe.html">平面设计</a></li>
+			</ul>
+			<div class="nav-hamburger">☰</div>
+		</nav>
+
+		<!-- 详情页主体 -->
+		<div class="detail-container">
+			<!-- 返回按钮 -->
+			<a href="visual.html" class="back-btn">← 返回作品列表</a>
+
+			<!-- 作品标题 -->
+			<div class="detail-title">
+				<h2>伏 羲 八 卦</h2>
+				<p>中华传统文化</p>
+			</div>
+
+			<!-- 文字说明区域 -->
+			<div class="detail-section">
+				<h3>作品说明</h3>
+				<div class="text-desc">
+					<p><strong>设计简介：</strong>伏羲八卦又称先天八卦，是传说中伏羲氏根据对自然现象的观察和感悟创造出来的。相传伏羲仰观天文、俯察地理，受龙马负图等启发而作八卦。它由乾、坤、震、巽、坎、离、艮、兑八个卦象组成，每个卦象由阳爻“_”和阴爻“--”构成三画卦，分别代表天、地、雷、风、水、火、山、泽等不同的自然现象和事物属性，蕴含着阴阳对立统一、事物发展变化等丰富的哲学思想其方位为乾南坤北、离东坎西等。伏羲八卦在中国传统文化中应用广泛，涉及哲学、占卜、中医、武术、建筑风水等诸多领域,对中国古代文化的发展产生了深远影响，是中国传统文化的重要源头之一。
+					</p>
+					<p><strong>设计工具：</strong>Llustrator、Tableau、Photoshop</p>
+				</div>
+			</div>
+			<!-- 展板/图片展示区域（A3比例完整显示） -->
+			<div class="detail-section">
+				<h3>作品展板</h3>
+				<div class="image-grid">
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/visual/%E4%BC%8F%E7%BE%B2%E5%85%AB%E5%8D%A6%E5%8F%AF%E8%A7%86%E5%8C%961.jpg" alt="海报" class="clickable-img">
+					</div>
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/visual/%E4%BC%8F%E7%BE%B2%E5%85%AB%E5%8D%A6%E5%8F%AF%E8%A7%86%E5%8C%962.jpg" class="clickable-img">
+					</div>
+				</div>
+			</div>
+			<div class="simple-member">
+				<p>项目作者：刘子瑜</p>
+			</div>
+		</div>
+
+		<!-- 大图预览遮罩层 -->
+		<div class="img-modal" id="imgModal">
+			<span class="close-modal" id="closeModal">&times;</span>
+			<img class="modal-img" id="modalImg" src="" alt="大图预览">
+		</div>
+
+		<script>
+			// 生成星空背景
+			window.onload = function() {
+				const starSky = document.getElementById('starSky');
+				const starCount = 100; // 详情页星星数量
+
+				for (let i = 0; i < starCount; i++) {
+					const star = document.createElement('div');
+					star.className = 'star';
+
+					// 随机位置
+					star.style.left = Math.random() * 100 + 'vw';
+					star.style.top = Math.random() * 100 + 'vh';
+
+					// 随机大小
+					const starSize = Math.random() * 2 + 1;
+					star.style.width = starSize + 'px';
+					star.style.height = starSize + 'px';
+
+					// 随机动画延迟和时长
+					star.style.animationDelay = Math.random() * 5 + 's';
+					star.style.animationDuration = Math.random() * 3 + 2 + 's';
+
+					starSky.appendChild(star);
+				}
+			}
+
+			// 大图预览逻辑
+			const modal = document.getElementById('imgModal');
+			const modalImg = document.getElementById('modalImg');
+			const closeBtn = document.getElementById('closeModal');
+			const clickableImgs = document.querySelectorAll('.clickable-img');
+
+			clickableImgs.forEach(img => {
+				img.onclick = function() {
+					modal.style.display = 'flex';
+					modalImg.src = this.src;
+					modalImg.alt = this.alt;
+				}
+			});
+
+			closeBtn.onclick = function() {
+				modal.style.display = 'none';
+			}
+
+			modal.onclick = function(e) {
+				if (e.target === modal) {
+					modal.style.display = 'none';
+				}
+			}
+
+			document.onkeydown = function(e) {
+				if (e.key === 'Escape' && modal.style.display === 'flex') {
+					modal.style.display = 'none';
+				}
+			}
+			const hamburger = document.querySelector('.nav-hamburger');
+			const navMenu = document.querySelector('.nav-menu');
+			hamburger.onclick = function() {
+				navMenu.classList.toggle('active');
+			}
+		</script>
+	</body>
+</html>

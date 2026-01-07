@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>作品详情 - FANTASY LINK APP界面设计</title>
+		<link rel="stylesheet" href="css/ui-detail.css">
+	</head>
+	<body>
+		<div class="star-sky" id="starSky"></div>
+
+		<!-- 导航栏 -->
+		<nav class="nav-bar">
+			<div class="nav-logo">
+				<a href="index.html">2022-2026</a>
+			</div>
+			<ul class="nav-menu">
+				<li><a href="index.html">首页</a></li>
+				<li><a href="ui.html">UI设计</a></li>
+				<li><a href="visual.html">信息可视化</a></li>
+				<li><a href="web.html">编程设计与开发</a></li>
+				<li><a href="game.html">游戏设计与开发</a></li>
+				<li><a href="video.html">视频剪辑</a></li>
+				<li><a href="designe.html">平面设计</a></li>
+			</ul>
+			<div class="nav-hamburger">☰</div>
+		</nav>
+
+		<!-- 详情页主体 -->
+		<div class="detail-container">
+			<!-- 返回按钮 -->
+			<a href="ui.html" class="back-btn">← 返回作品列表</a>
+
+			<!-- 作品标题 -->
+			<div class="detail-title">
+				<h2>FANTASY LINK</h2>
+				<p>经典三消 随时随地</p>
+			</div>
+
+			<!-- 文字说明区域 -->
+			<div class="detail-section">
+				<h3>作品说明</h3>
+				<div class="text-desc">
+					<p><strong>设计背景：</strong>《雪狐之境：四季迷消》以 “霜语之境永冬诅咒 + 雪狐森林四季失衡” 为世界观，围绕雪狐 “芽芽”
+						借时之树护身符，通过三消收集四季能量、驱散寒潮、拯救灵狐的剧情展开，是一款以 “治愈陪伴 + 四季平衡” 为核心的创意三消游戏。</p>
+					<p><strong>设计亮点：</strong>
+						<br>1.四季联动玩法：三消元素对应四季符号，组合触发专属特效，策略性与世界观深度绑定
+						<br>2.IP 情感交互：主角 “芽芽” 随关卡状态动态反馈表情 / 动作，解锁皮肤强化陪伴感
+						<br>3.成长式关卡：通关点亮时之树四季光芒，进度与剧情目标强关联
+						<br>4.主题化障碍：寒潮、荆棘等障碍贴合世界观，需对应季节元素消除，强化沉浸感
+					</p>
+					<p><strong>设计工具：</strong>Figma、Axure、Photoshop、Llustrator、即梦</p>
+				</div>
+			</div>
+
+			<!-- 展板/图片展示区域（A3比例完整显示） -->
+			<div class="detail-section">
+				<h3>作品展板/界面截图</h3>
+				<div class="image-grid">
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/ui/FANTASY%20LINK%E5%B1%95%E6%9D%BF3.png" alt="3" class="clickable-img">
+					</div>
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/ui/FANTASY%20LINK%E5%B1%95%E6%9D%BF2.jpg" alt="展板2" class="clickable-img">
+					</div>
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/ui/FANTASY%20LINK%E5%B1%95%E6%9D%BF1.jpg" alt="展板1" class="clickable-img">
+					</div>
+					<div class="img-wrapper">
+						<img src="https://lllzyyy.space/images/ui/FANTASY%20LINK%E5%B1%95%E6%9D%BF4.png" alt="展板4" class="clickable-img">
+					</div>
+				</div>
+			</div>
+				<div class="simple-member">
+					<p>项目成员：刘子瑜、马春华、黄芷彤、黄静芸</p>
+				</div>
+
+		</div>
+
+		<!-- 大图预览遮罩层 -->
+		<div class="img-modal" id="imgModal">
+			<span class="close-modal" id="closeModal">&times;</span>
+			<img class="modal-img" id="modalImg" src="" alt="大图预览">
+		</div>
+
+		<script>
+			// 生成星空背景
+			window.onload = function() {
+				const starSky = document.getElementById('starSky');
+				const starCount = 100; // 详情页星星数量
+
+				for (let i = 0; i < starCount; i++) {
+					const star = document.createElement('div');
+					star.className = 'star';
+
+					// 随机位置
+					star.style.left = Math.random() * 100 + 'vw';
+					star.style.top = Math.random() * 100 + 'vh';
+
+					// 随机大小
+					const starSize = Math.random() * 2 + 1;
+					star.style.width = starSize + 'px';
+					star.style.height = starSize + 'px';
+
+					// 随机动画延迟和时长
+					star.style.animationDelay = Math.random() * 5 + 's';
+					star.style.animationDuration = Math.random() * 3 + 2 + 's';
+
+					starSky.appendChild(star);
+				}
+			}
+
+			// 大图预览逻辑
+			const modal = document.getElementById('imgModal');
+			const modalImg = document.getElementById('modalImg');
+			const closeBtn = document.getElementById('closeModal');
+			const clickableImgs = document.querySelectorAll('.clickable-img');
+
+			clickableImgs.forEach(img => {
+				img.onclick = function() {
+					modal.style.display = 'flex';
+					modalImg.src = this.src;
+					modalImg.alt = this.alt;
+				}
+			});
+
+			closeBtn.onclick = function() {
+				modal.style.display = 'none';
+			}
+
+			modal.onclick = function(e) {
+				if (e.target === modal) {
+					modal.style.display = 'none';
+				}
+			}
+
+			// ESC键关闭
+			document.onkeydown = function(e) {
+				if (e.key === 'Escape' && modal.style.display === 'flex') {
+					modal.style.display = 'none';
+				}
+			}
+			const hamburger = document.querySelector('.nav-hamburger');
+			const navMenu = document.querySelector('.nav-menu');
+			hamburger.onclick = function() {
+				navMenu.classList.toggle('active');
+			}
+		</script>
+	</body>
+</html>
